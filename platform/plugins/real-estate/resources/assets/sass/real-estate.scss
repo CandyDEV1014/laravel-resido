@@ -1,0 +1,28 @@
+#map {
+    height: 300px;
+}
+
+#infowindow-content {
+    display: none;
+    .title {
+        font-weight: bold;
+    }
+}
+
+#map {
+    #infowindow-content {
+        display: inline;
+    }
+}
+
+#target {
+    width: 345px;
+}
+
+.renew_cost {
+    padding: 0 6px;
+    color: #dc3545 !important;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: var(--font-heading);
+}

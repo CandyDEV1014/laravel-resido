@@ -1,0 +1,9 @@
+{
+    "name": "botble/newsletter",
+    "description": "Newsletter plugin",
+    "type": "package",
+    "require": {
+        "spatie/laravel-newsletter": "^4.5",
+        "sendgrid/sendgrid": "~7"
+    }
+}

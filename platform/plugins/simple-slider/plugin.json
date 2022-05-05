@@ -1,0 +1,9 @@
+{
+  "name": "Simple Slider",
+  "namespace": "Botble\\SimpleSlider\\",
+  "provider": "Botble\\SimpleSlider\\Providers\\SimpleSliderServiceProvider",
+  "author": "Botble Technologies",
+  "url": "https://botble.com",
+  "version": "5.8",
+  "description": "A plugin to create sliders"
+}

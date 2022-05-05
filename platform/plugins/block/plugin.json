@@ -1,0 +1,9 @@
+{
+    "name": "Block",
+    "namespace": "Botble\\Block\\",
+    "provider": "Botble\\Block\\Providers\\BlockServiceProvider",
+    "author": "Botble Technologies",
+    "url": "https://botble.com",
+    "version": "5.8",
+    "description": "Manage static block (HTML, Text) on your theme"
+}

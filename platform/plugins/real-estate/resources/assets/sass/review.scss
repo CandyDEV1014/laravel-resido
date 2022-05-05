@@ -1,0 +1,41 @@
+.rating_wrap {
+    font-family: "Font Awesome 5 Free" !important;
+    vertical-align: top;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+    width: 75px;
+    display: inline-block;
+
+    &::before {
+        font-size: 12px;
+        content: "\f005\f005\f005\f005\f005";
+        top: 0;
+        position: absolute;
+        left: 0;
+        float: left;
+        color: #d2d2d2;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    .product_rate {
+        overflow: hidden;
+        font-family: "Font Awesome 5 Free" !important;
+        top: 0;
+        left: 0;
+        position: absolute;
+        padding-top: 1.5em;
+        color: #EDB867;
+
+        &::before {
+            font-size: 12px;
+            content: "\f005\f005\f005\f005\f005";
+            top: 0;
+            position: absolute;
+            left: 0;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Testimonial",
+    "namespace": "Botble\\Testimonial\\",
+    "provider": "Botble\\Testimonial\\Providers\\TestimonialServiceProvider",
+    "author": "Botble Technologies",
+    "url": "https://botble.com",
+    "version": "5.8",
+    "description": "Customer testimonials"
+}

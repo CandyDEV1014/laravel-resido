@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1500px" height="280px" viewBox="0 0 1500 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="55.7705937%" cy="52.3996155%" fx="55.7705937%" fy="52.3996155%" r="52.3679212%" gradientTransform="translate(0.557706,0.523996),scale(0.801688,1.000000),translate(-0.557706,-0.523996)" id="radialGradient-1">
+            <stop stop-color="#95AFF4" offset="0%"></stop>
+            <stop stop-color="#3362DB" offset="17%"></stop>
+            <stop stop-color="#3268E0" stop-opacity="0.57" offset="48%"></stop>
+            <stop stop-color="#0746E2" stop-opacity="0.26" offset="73%"></stop>
+            <stop stop-color="#0842DB" stop-opacity="0.07" offset="91%"></stop>
+            <stop stop-color="#0940D8" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="99.7840293%" y1="50.1999443%" x2="3.75208421%" y2="50.1999443%" id="linearGradient-2">
+            <stop stop-color="#0092FF" offset="0%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0.98" offset="2%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0.57" offset="39%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0.26" offset="69%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0.07" offset="90%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.0106486%" y1="-1.07906427%" x2="50.0106486%" y2="100.035346%" id="linearGradient-3">
+            <stop stop-color="#0092FF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.0047769%" y1="-3.81306222%" x2="50.0047769%" y2="97.759654%" id="linearGradient-4">
+            <stop stop-color="#0092FF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="44.8473402%" cy="46.5427327%" fx="44.8473402%" fy="46.5427327%" r="57.5046446%" gradientTransform="translate(0.448473,0.465427),scale(0.867164,1.000000),translate(-0.448473,-0.465427)" id="radialGradient-5">
+            <stop stop-color="#0092FF" offset="0%"></stop>
+            <stop stop-color="#0091FF" stop-opacity="0.98" offset="2%"></stop>
+            <stop stop-color="#0078FF" stop-opacity="0.57" offset="39%"></stop>
+            <stop stop-color="#0065FF" stop-opacity="0.26" offset="69%"></stop>
+            <stop stop-color="#0059FF" stop-opacity="0.07" offset="90%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="99.1478326%" y1="39.3989201%" x2="32.2093443%" y2="53.8560113%" id="linearGradient-6">
+            <stop stop-color="#0055FF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0052F2" stop-opacity="0.39" offset="16%"></stop>
+            <stop stop-color="#004DDF" stop-opacity="0.22" offset="42%"></stop>
+            <stop stop-color="#004AD1" stop-opacity="0.1" offset="66%"></stop>
+            <stop stop-color="#0048C9" stop-opacity="0.03" offset="86%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="68.8900257%" cy="11.2755079%" fx="68.8900257%" fy="11.2755079%" r="102.624249%" id="radialGradient-7">
+            <stop stop-color="#0092FF" offset="24%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0.2" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="2.01059111%" y1="50.6142156%" x2="100.280367%" y2="50.6142156%" id="linearGradient-8">
+            <stop stop-color="#3F7AF0" stop-opacity="0.7549" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="2.00432488%" y1="50.5177173%" x2="100.652281%" y2="50.5177173%" id="linearGradient-9">
+            <stop stop-color="#4D85F6" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="2.15634649%" y1="49.892563%" x2="100.390466%" y2="49.892563%" id="linearGradient-10">
+            <stop stop-color="#4F89FF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="93.7085986%" cy="41.0841478%" fx="93.7085986%" fy="41.0841478%" r="92.4783179%" id="radialGradient-11">
+            <stop stop-color="#0055FF" offset="0%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="50.0842719%" y1="-0.893178048%" x2="50.0842719%" y2="100.294262%" id="linearGradient-12">
+            <stop stop-color="#3066D2" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.1800934%" y1="-3.52600384%" x2="50.1800934%" y2="98.3561144%" id="linearGradient-13">
+            <stop stop-color="#6E9EFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0055FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.69%" y1="2174.10361%" x2="50.69%" y2="2065.32631%" id="linearGradient-14">
+            <stop stop-color="#0092FF" stop-opacity="0.7" offset="0%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="54.28%" y1="1683.31742%" x2="54.28%" y2="1577.06951%" id="linearGradient-15">
+            <stop stop-color="#0092FF" stop-opacity="0.7" offset="0%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="98.7959545%" y1="39.4037286%" x2="32.0542831%" y2="53.8618995%" id="linearGradient-16">
+            <stop stop-color="#0055FF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#0052F2" stop-opacity="0.39" offset="16%"></stop>
+            <stop stop-color="#004DDF" stop-opacity="0.22" offset="42%"></stop>
+            <stop stop-color="#004AD1" stop-opacity="0.1" offset="66%"></stop>
+            <stop stop-color="#0048C9" stop-opacity="0.03" offset="86%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="93.5289666%" cy="40.4706702%" fx="93.5289666%" fy="40.4706702%" r="93.2725218%" gradientTransform="translate(0.935290,0.404707),scale(0.995070,1.000000),translate(-0.935290,-0.404707)" id="radialGradient-17">
+            <stop stop-color="#0055FF" offset="0%"></stop>
+            <stop stop-color="#0047C6" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="19.5251442%" y1="11.1945796%" x2="71.131828%" y2="90.8038005%" id="linearGradient-18">
+            <stop stop-color="#0092FF" offset="0%"></stop>
+            <stop stop-color="#0055FF" offset="23%"></stop>
+            <stop stop-color="#0940D8" offset="86%"></stop>
+            <stop stop-color="#0A19A3" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.5512918%" y1="98.6149401%" x2="32.2137935%" y2="2.21112567%" id="linearGradient-19">
+            <stop stop-color="#0940D8" offset="0%"></stop>
+            <stop stop-color="#0092FF" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="68.9740499%" cy="10.5756247%" fx="68.9740499%" fy="10.5756247%" r="103.912425%" gradientTransform="translate(0.689740,0.105756),scale(1.000000,0.983051),translate(-0.689740,-0.105756)" id="radialGradient-20">
+            <stop stop-color="#00BDFF" offset="24%"></stop>
+            <stop stop-color="#0092FF" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M-1,251.1375 C133.9,216.0375 257.6,145.1375 380,140.8375 C568.4,124.9375 520.6,342.5375 854.4,191.6375 C1063.3,97.2375004 1156.65944,335.8375 1499.35944,251.1375 L1500.87027,250.76948" id="path-3-2_1_" stroke="#005DE5" stroke-width="2" opacity="0.66"></path>
+        <ellipse id="Oval" fill="url(#radialGradient-1)" opacity="0.32" cx="657.4" cy="157" rx="47.4" ry="38"></ellipse>
+        <path d="M0,277.781171 C6.9,277.881171 17.1,278.481171 24,278.481171 C230.3,278.481171 417,119.281171 674.9,209.881171 C896.7,321.181171 980.9,225.981171 1218,191.681171 C1360.8,170.981171 1395.1485,274.281171 1500.1485,277.781171 L1500.93647,278.109103" id="path-6-2_1_" stroke="#005DE5" stroke-width="2" opacity="0.66"></path>
+        <path d="M534.9,182.3 L534,178.2 C584.8,166.7 624.5,159.3 658.9,155 L659.4,159.2 C625.2,163.5 585.6,170.9 534.9,182.3 Z" id="Path" fill="url(#linearGradient-2)"></path>
+        <ellipse id="Oval_1_" fill="url(#linearGradient-3)" opacity="0.62" cx="540.9" cy="177.8" rx="39.9" ry="39.8"></ellipse>
+        <circle id="Oval_2_" fill="url(#linearGradient-4)" opacity="0.62" cx="541.6" cy="177.6" r="19.6"></circle>
+        <path d="M1183.1,114.04053 C1046.3,36.5405303 930.8,148.14053 906,238.34053" id="Path_1_" stroke="#00BDFF" stroke-width="3" opacity="0.09178758" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <circle id="Oval_3_" fill="#0092FF" cx="133.7" cy="200.7" r="2.7"></circle>
+        <ellipse id="Oval_4_" fill="url(#radialGradient-5)" opacity="0.4" cx="1413" cy="226.1" rx="67" ry="58.1"></ellipse>
+        <path d="M659,156.878538 C681.5,125.778538 719.5,125.778538 740.7,152.678538" id="Path_2_" stroke="#1156AF" stroke-width="3" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <circle id="Oval_5_" fill="url(#linearGradient-6)" cx="212" cy="242" r="19"></circle>
+        <path d="M659.7,166.4 C654.4,166.4 650,162.1 650,156.7 C650,151.3 654.3,147 659.7,147 C665,147 669.4,151.3 669.4,156.7 C669.4,162.1 665.1,166.4 659.7,166.4 Z M659.7,148.9 C655.4,148.9 651.9,152.4 651.9,156.7 C651.9,161 655.4,164.5 659.7,164.5 C664,164.5 667.5,161 667.5,156.7 C667.5,152.4 664,149 659.7,148.9 Z" id="Shape" fill="url(#radialGradient-7)" fill-rule="nonzero"></path>
+        <circle id="Oval_6_" fill="#FFFFFF" opacity="0.7" cx="659.7" cy="156.7" r="2.7"></circle>
+        <path d="M659.5,137.7 L659.5,119" id="Path_4_" stroke="#0055FF" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.13,6.26"></path>
+        <path d="M665.8,115 L706.7,115 C707.2,115 707.5,115.3 707.5,115.8 L707.5,120.8 C707.5,121.3 707.2,121.6 706.7,121.6 L665.8,121.6 C665.3,121.6 665,121.3 665,120.8 L665,115.8 C665,115.3 665.3,115 665.8,115 Z" id="Path_6_" fill="url(#linearGradient-8)" opacity="0.6"></path>
+        <path d="M665.8,126 L684.9,126 C685.4,126 685.7,126.3 685.7,126.8 L685.7,131.5 C685.7,132 685.4,132.3 684.9,132.3 L665.8,132.3 C665.3,132.3 665,132 665,131.5 L665,126.8 C665,126.4 665.3,126 665.8,126 Z" id="Path_7_" fill="url(#linearGradient-9)" opacity="0.6"></path>
+        <circle id="Oval_7_" fill="#0092FF" cx="659.5" cy="116.5" r="1.5"></circle>
+        <ellipse id="Oval_8_" stroke="#0940D8" stroke-width="2" opacity="0.7" cx="1157.8" cy="177.7" rx="8.8" ry="8.7"></ellipse>
+        <circle id="Oval_9_" fill="#0092FF" cx="1157.6" cy="177.6" r="2.6"></circle>
+        <path d="M1157.5,156.5 L1157.5,146" id="Path_8_" stroke="#0092FF" stroke-width="3" stroke-linecap="round" stroke-dasharray="0,8.359999999999999"></path>
+        <path d="M1203.7,141 L1162.8,141 C1162.3,141 1162,141.3 1162,141.8 L1162,146.8 C1162,147.3 1162.3,147.6 1162.8,147.6 L1203.7,147.6 C1204.2,147.6 1204.5,147.3 1204.5,146.8 L1204.5,141.8 C1204.6,141.4 1204.2,141 1203.7,141 Z M1182,151.9 L1162.8,151.9 C1162.3,151.9 1162,152.2 1162,152.7 L1162,157.4 C1162,157.9 1162.3,158.2 1162.8,158.2 L1182,158.2 C1182.5,158.2 1182.8,157.9 1182.8,157.4 L1182.8,152.7 C1182.8,152.2 1182.5,151.9 1182,151.9 Z" id="Shape_1_" fill="url(#linearGradient-10)" fill-rule="nonzero" opacity="0.6"></path>
+        <circle id="Oval_10_" fill="#0055FF" cx="1157.5" cy="142.5" r="1.5"></circle>
+        <path d="M211.7,251.4 C206.4,251.4 202,247.1 202,241.7 C202,236.3 206.3,232 211.7,232 C217.1,232 221.4,236.3 221.4,241.7 C221.4,247.1 217.1,251.4 211.7,251.4 Z M211.7,233.9 C207.4,233.9 203.9,237.4 203.9,241.7 C203.9,246 207.4,249.5 211.7,249.5 C216,249.5 219.5,246 219.5,241.7 C219.6,237.5 216.1,234 211.7,233.9 Z" id="Shape_2_" fill="url(#radialGradient-11)" fill-rule="nonzero"></path>
+        <circle id="Oval_11_" fill="#08DCCE" opacity="0.4" cx="199.8" cy="244.8" r="1.8"></circle>
+        <circle id="Oval_12_" fill="#08DCCE" opacity="0.3" cx="185.8" cy="246.8" r="1.8"></circle>
+        <circle id="Oval_13_" fill="#08DCCE" opacity="0.2" cx="171.8" cy="249.8" r="1.8"></circle>
+        <circle id="Oval_14_" fill="#08DCCE" opacity="0.1" cx="157.8" cy="251.8" r="1.8"></circle>
+        <circle id="Oval_15_" fill="#0092FF" cx="310.7" cy="152.7" r="2.7"></circle>
+        <circle id="Oval_16_" fill="#0092FF" cx="51.7" cy="226.7" r="2.7"></circle>
+        <path d="M741,152.39685 C862.8,73.2968504 1013.9,74.9968504 1115.2,182.89685" id="Path_10_" stroke="#1056AF" stroke-width="3" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <path d="M1157,177.745714 C1193.5,100.545714 1225.8,62.2457136 1255.9,43.3457136 C1309.3,9.74571362 1365.1,37.2457136 1396.7,104.145714" id="Path_11_" stroke="#00BDFF" stroke-width="3" opacity="0.09178758" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <path d="M1180,128.682774 C1258.1,39.6827735 1328.3,91.5827735 1363.7,191.282774" id="Path_12_" stroke="#0083C6" stroke-width="3" opacity="0.5" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <circle id="Oval_17_" fill="#0092FF" cx="212.7" cy="241.7" r="2.7"></circle>
+        <ellipse id="Oval_18_" fill="url(#linearGradient-12)" cx="740.9" cy="152.8" rx="22.9" ry="22.8"></ellipse>
+        <ellipse id="Oval_19_" fill="url(#linearGradient-13)" cx="741.3" cy="153.2" rx="11.3" ry="11.2"></ellipse>
+        <circle id="Oval_20_" fill="#FFFFFF" opacity="0.7" cx="740.7" cy="152.7" r="2.7"></circle>
+        <path d="M212,238.804772 C225.6,88.2047721 283.3,77.8047721 309.5,151.604772" id="Path_13_" stroke="#4096FF" stroke-width="3" opacity="0.3043" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <path d="M207.7,240.644839 C179.5,154.344839 151.3,154.344839 137,196.744839" id="Path_14_" stroke="#4096FF" stroke-width="3" opacity="0.3043" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <path d="M53,220.224541 C60.9,180.224541 101.6,163.424541 131,196.824541" id="Path-2" stroke="#4096FF" stroke-width="3" stroke-linecap="round" stroke-dasharray="0,9"></path>
+        <ellipse id="Oval_21_" fill="#0092FF" cx="1384.8" cy="196.7" rx="2.8" ry="2.7"></ellipse>
+        <circle id="Oval_22_" fill="#0092FF" opacity="0.7" cx="1410.8" cy="193.8" r="1.8"></circle>
+        <circle id="Oval_23_" fill="#0092FF" opacity="0.4" cx="1434.8" cy="190.8" r="1.8"></circle>
+        <circle id="Oval_24_" fill="#0092FF" opacity="0.4" cx="1334.8" cy="206.8" r="1.8"></circle>
+        <circle id="Oval_25_" fill="#0092FF" opacity="0.7" cx="1359.8" cy="201.8" r="1.8"></circle>
+        <circle id="Oval_26_" fill="#00BDFF" cx="1383.1" cy="49.1" r="1.1"></circle>
+        <circle id="Oval_27_" fill="#00BDFF" cx="1368.1" cy="95.1" r="1.1"></circle>
+        <circle id="Oval_28_" fill="#00BDFF" cx="1395.1" cy="61.1" r="1.1"></circle>
+        <circle id="Oval_29_" fill="#00BDFF" opacity="0.5" cx="1375.1" cy="75.1" r="1.1"></circle>
+        <circle id="Oval_30_" fill="#00BDFF" opacity="0.5" cx="1394.1" cy="118.1" r="1.1"></circle>
+        <circle id="Oval_31_" fill="#00BDFF" opacity="0.33" cx="1390.1" cy="68.1" r="1.1"></circle>
+        <path d="M329.5,168.8 L329.5,142" id="Path_19_" stroke="url(#linearGradient-14)" stroke-width="2.5" stroke-linecap="round"></path>
+        <path d="M319.5,160.8 L319.5,124" id="Path_20_" stroke="url(#linearGradient-15)" stroke-width="2.5" stroke-linecap="round"></path>
+        <path d="M305.2,170.4 C245.4,93.3 147,42.9 0,39" id="Path_9_" stroke="#0092FF" stroke-width="2.78" opacity="0.2" stroke-linecap="round" stroke-dasharray="0"></path>
+        <circle id="Oval_32_" fill="#FFFFFF" opacity="0.7" cx="383.4" cy="197.4" r="2.4"></circle>
+        <ellipse id="Oval_33_" fill="url(#linearGradient-16)" cx="111" cy="53.9" rx="20" ry="19.9"></ellipse>
+        <path d="M111.185225,64.1852249 C107.085225,64.1852249 103.385225,61.7852249 101.785225,57.9852249 C100.185225,54.1852249 101.085225,49.8852249 103.985225,46.9852249 C106.885225,44.0852249 111.285225,43.1852249 114.985225,44.7852249 C118.785225,46.3852249 121.285225,49.9852249 121.285225,54.0852249 C121.285225,59.5852249 116.785225,64.0852249 111.185225,64.1852249 Z M111.185225,45.8852249 C106.585225,45.8852249 102.885225,49.5852249 102.885225,54.0852249 C102.885225,58.5852249 106.585225,62.2852249 111.185225,62.2852249 C115.785225,62.2852249 119.485225,58.5852249 119.485225,54.0852249 C119.485225,49.5852249 115.785225,45.8852249 111.185225,45.8852249 Z" id="Shape_4_" fill="url(#radialGradient-17)" fill-rule="nonzero"></path>
+        <ellipse id="Oval_34_" fill="#0092FF" cx="111.8" cy="53.7" rx="2.8" ry="2.7"></ellipse>
+        <circle id="Oval_35_" fill="#0092FF" opacity="0.75" cx="89.7" cy="51.7" r="1.7"></circle>
+        <circle id="Oval_36_" fill="#0092FF" opacity="0.5" cx="67.7" cy="48.7" r="1.7"></circle>
+        <circle id="Oval_37_" fill="#0092FF" opacity="0.25" cx="45.7" cy="47.7" r="1.7"></circle>
+        <path d="M383.5,154 L383.5,186.7" id="Path_15_" stroke="#0092FF" stroke-width="2.78" opacity="0.2" stroke-linecap="round" stroke-dasharray="0"></path>
+        <path d="M384.9,66.0083333 C383.9,64.9083333 382.4,64.7083333 381.2,65.4083333 L373.3,70.6083333 C372.2,71.3083333 354,92.6083333 354,108.408333 C354,122.908333 362.3,139.508333 374.5,146.908333 C381.6,151.208333 388.7,152.008333 394.3,149.108333 C396.6,148.108333 403.3,143.908333 404.5,143.208333 C409.8,139.508333 413.3,132.508333 413.5,122.508333 C413.8,98.4083333 391.3,72.8083333 384.9,66.0083333 Z" id="Path_16_" fill="url(#linearGradient-18)" opacity="0.4"></path>
+        <path d="M354,109.429612 C354,94.2296115 366.2,79.1296115 372.1,72.8296115 C372.6,72.3296115 373.4,71.6296115 373.5,71.5296115 C374.7,70.6296115 376.4,70.9296115 377.3,72.0296115 C384.4,79.6296115 405.8,104.629612 405.4,128.229612 C405.1,149.429612 389.6,157.329612 374.5,148.129612 C362.3,140.729612 354,124.029612 354,109.429612 Z" id="Path_17_" fill="url(#linearGradient-19)" opacity="0.4"></path>
+        <path d="M373,114.4 C373,110.4 376.6,106.4 377.8,105.2 C377.9,105.1 378,105 378.1,105 C378.2,105 378.4,105 378.5,105.1 C378.5,105.1 378.6,105.2 378.6,105.2 C380.1,106.8 385.7,113.1 385.6,119 C385.5,124.2 381.8,126.1 378.1,123.8 C375,122 373,117.9 373,114.4 Z" id="Path_18_" fill="#15D3FF" opacity="0.4"></path>
+        <path d="M383.7,205.7 C378.9,205.7 375,201.7 375,196.8 C375,191.9 378.9,188 383.7,188 C388.5,188 392.4,192 392.4,196.8 C392.4,199.2 391.5,201.4 389.8,203.1 C388.3,204.8 386,205.7 383.7,205.7 Z M383.7,189.6 C379.8,189.6 376.6,192.8 376.6,196.8 C376.6,200.8 379.8,204 383.7,204 C387.6,204 390.8,200.8 390.8,196.8 C390.8,192.9 387.6,189.6 383.7,189.6 Z" id="Shape_3_" fill="url(#radialGradient-20)" fill-rule="nonzero" opacity="0.3"></path>
+        <path d="M1500.3,39.1070347 C1500.3,39.1070347 1317,29.6070347 1209,189.607035" id="Path_22_" stroke="#0092FF" stroke-width="2.78" opacity="0.2" stroke-linecap="round" stroke-dasharray="0"></path>
+    </g>
+</svg>

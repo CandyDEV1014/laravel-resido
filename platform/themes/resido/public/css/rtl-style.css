@@ -1,0 +1,277 @@
+body[dir=rtl] {
+  direction: rtl;
+  text-align: right;
+}
+body[dir=rtl] .text-left {
+  text-align: right !important;
+}
+body[dir=rtl] .text-right {
+  text-align: left !important;
+}
+body[dir=rtl] .float-right {
+  float: left !important;
+}
+body[dir=rtl] .float-left {
+  float: right !important;
+}
+body[dir=rtl] .action_footer {
+  right: auto;
+  left: 80px;
+}
+body[dir=rtl] .choose-currency a:after {
+  left: -5px;
+  right: auto;
+}
+body[dir=rtl] .blii .status {
+  right: auto;
+  left: 10px;
+}
+body[dir=rtl] .hourseitem .info .heart {
+  right: auto;
+  left: 10px;
+}
+body[dir=rtl] .projecthome .item .description .heart {
+  right: auto;
+  left: 10px;
+}
+body[dir=rtl] .projecthome p.threemt span i {
+  float: right;
+}
+body[dir=rtl] .projecthome p.threemt span .vti {
+  margin-left: 0;
+  margin-right: 5px;
+}
+body[dir=rtl] .media-count-wrapper {
+  left: auto;
+  right: 10px;
+}
+body[dir=rtl] .item-price-wrap {
+  left: auto;
+  right: 0;
+}
+body[dir=rtl] .search-box .input-has-icon i {
+  right: auto;
+  left: 10px;
+}
+body[dir=rtl] .form-group--inline label {
+  margin-right: 0;
+  margin-left: 10px;
+}
+body[dir=rtl] .breadcrumb-item + .breadcrumb-item::before {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+body[dir=rtl] .mr-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+body[dir=rtl] .mx-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+body[dir=rtl] .topsearch .typesearch a {
+  float: right;
+  border-right: none;
+  border-left: 1px solid #ffffff !important;
+}
+body[dir=rtl] .topsearch .typesearch a:first-child {
+  border-left: none !important;
+}
+body[dir=rtl] .advanced-search {
+  text-align: right;
+}
+body[dir=rtl] .spinner-icon {
+  right: auto;
+  left: 13px;
+}
+body[dir=rtl] .os-app-caps {
+  margin-right: 13px;
+}
+body[dir=rtl] .os-app-icon {
+  margin-right: 0;
+}
+body[dir=rtl] .fr-position i {
+  margin-right: inherit;
+  margin-left: 10px;
+}
+body[dir=rtl] a.bl-continue:before {
+  left: -27px;
+  right: inherit;
+}
+body[dir=rtl] .icon-features-wrap:before {
+  right: 100%;
+  left: inherit;
+}
+body[dir=rtl] .listing-card-info-icon {
+  margin-left: 1.2rem;
+  margin-right: unset;
+}
+body[dir=rtl] .listing-card-info-icon .inc-fleat-icon {
+  margin-right: inherit;
+  margin-left: 7px;
+}
+body[dir=rtl] ul.language_bar_list {
+  padding-left: 0;
+}
+body[dir=rtl] .align-to-right {
+  float: left;
+}
+body[dir=rtl] .nav-header {
+  float: right;
+}
+body[dir=rtl] .submenu-indicator {
+  float: left;
+  margin-right: 6px;
+  margin-left: 0;
+}
+body[dir=rtl] .nav-dropdown .nav-dropdown {
+  right: 100%;
+}
+body[dir=rtl] .nav-menu > li {
+  float: right;
+  text-align: right;
+}
+body[dir=rtl] .nav-menu .nav-dropdown > li {
+  float: right;
+  text-align: right;
+}
+body[dir=rtl] .nav-menu > li > .nav-dropdown:before {
+  right: 25px;
+}
+body[dir=rtl] .nav-dropdown .submenu-indicator {
+  left: 15px;
+  float: left;
+  right: unset;
+}
+body[dir=rtl] .page-title {
+  text-align: right !important;
+}
+body[dir=rtl] .breadcrumb-item + .breadcrumb-item::before {
+  float: right;
+}
+body[dir=rtl] .pricing-body ul {
+  text-align: right;
+}
+body[dir=rtl] .page-content .dataTables_wrapper .dt-buttons {
+  left: 0;
+  right: unset;
+}
+body[dir=rtl] .dataTables_filter {
+  float: right !important;
+  left: unset;
+  right: 125px;
+}
+body[dir=rtl] .dashboard-wraper .widget-title > h4 {
+  float: right;
+}
+body[dir=rtl] div.dataTables_wrapper div.dataTables_filter {
+  text-align: left;
+}
+body[dir=rtl] .select2-container--default {
+  right: unset;
+}
+body[dir=rtl] .select2-container--default .select2-selection--single .select2-selection__rendered {
+  text-align: right;
+}
+body[dir=rtl] .pricing-body ul li.available:before {
+  right: unset;
+  left: 20px;
+}
+body[dir=rtl] .content_block_2 .content-box .btn-box .download-btn {
+  float: right;
+}
+body[dir=rtl] .content_block_2 .content-box .btn-box .download-btn.play-store {
+  margin-left: 30px;
+  margin-right: 0;
+}
+body[dir=rtl] .icon-features-wrap:before {
+  transform: rotate(180deg);
+}
+body[dir=rtl] .italian-search.hero-search-radius .input-with-icon .form-control, body[dir=rtl] .italian-search.hero-search-radius .input-with-shadow .form-control, body[dir=rtl] .italian-search.hero-search-radius .input-with-shadow .select2-container, body[dir=rtl] .italian-search.hero-search-radius .input-with-icon .select2-container {
+  padding-right: 45px;
+}
+body[dir=rtl] .input-with-icon .form-control, body[dir=rtl] .input-with-shadow .form-control, body[dir=rtl] .input-with-shadow .select2-container, body[dir=rtl] .input-with-icon .select2-container {
+  padding-left: unset;
+  padding-right: 45px;
+}
+body[dir=rtl] .input-with-icon i {
+  leff: unset;
+  right: 15px;
+}
+body[dir=rtl] .b-r {
+  border-right: unset !important;
+  border-left: 1px solid #e0ecf5 !important;
+}
+body[dir=rtl] .b-l {
+  border-left: unset !important;
+  border-right: 1px solid #e0ecf5 !important;
+}
+body[dir=rtl] .input-with-icon img {
+  left: unset;
+  right: 15px;
+}
+body[dir=rtl] #advance-search .checkbox-custom + .checkbox-custom-label:before,
+body[dir=rtl] #features .checkbox-custom + .checkbox-custom-label:before {
+  margin-left: 10px;
+  margin-right: unset;
+}
+body[dir=rtl] .italian-search .choose-property-type ul {
+  justify-content: flex-start;
+}
+body[dir=rtl] .simple-search-wrap .pk-input-group .form-control {
+  padding-left: unset;
+  padding-right: 3rem;
+}
+body[dir=rtl] .simple-search-wrap .pk-input-group:after {
+  right: 0;
+  left: unset;
+}
+body[dir=rtl] #module a.collapsed:before, body[dir=rtl] #module a:not(.collapsed):before {
+  right: 0;
+}
+body[dir=rtl] #module > a, body[dir=rtl] #module > a:hover, body[dir=rtl] #module > a:focus {
+  padding: 14px 45px 14px 10px;
+}
+body[dir=rtl] .widget-boxed-header h4 a:before {
+  left: 0;
+  right: unset;
+}
+body[dir=rtl] .lp-property-view i.ti-angle-right {
+  transform: rotate(180deg);
+}
+body[dir=rtl] .nav-dropdown .submenu-indicator .submenu-indicator-chevron {
+  transform: rotate(135deg);
+}
+body[dir=rtl] .blog-page .blog-details .post-bottom-meta .post-share {
+  flex: 1 1 50%;
+  text-align: left;
+}
+body[dir=rtl] .foot-location img {
+  margin-right: unset;
+  margin-left: 5px;
+}
+body[dir=rtl] .sides_list_property_detail {
+  padding-left: unset;
+  padding-right: 0.7rem;
+}
+body[dir=rtl] .listing-card-info-price {
+  padding-right: 0.35em;
+  padding-left: unset;
+}
+body[dir=rtl] .listing-card-info-price-list {
+  padding-right: 0.35em;
+  padding-left: unset;
+}
+body[dir=rtl] .reviews_text {
+  margin-left: unset;
+  margin-right: 8px;
+}
+body[dir=rtl] .language_bar_list li a img {
+  float: right;
+  margin-left: 10px;
+  margin-right: unset;
+}
+body[dir=rtl] #back2Top {
+  left: 22px;
+  right: unset;
+}

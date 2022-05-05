@@ -1,0 +1,152 @@
+.range-slider {
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    .range-slider .rangeValues {
+        display: block;
+    }
+
+    input[type=range] {
+        -webkit-appearance: none;
+        border: 1px solid white;
+        width: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 300px;
+        height: 5px;
+        background: #ddd;
+        border: none;
+        border-radius: 3px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: #1266e3;
+        margin-top: -4px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+    }
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #ccc;
+    }
+
+    input[type=range]::-moz-range-track {
+        width: 300px;
+        height: 5px;
+        background: #ddd;
+        border: none;
+        border-radius: 3px;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: #1266e3;
+    }
+
+    /*hide the outline behind the border*/
+    input[type=range]:-moz-focusring {
+        outline: 1px solid white;
+        outline-offset: -1px;
+    }
+
+    input[type=range]::-ms-track {
+        width: 300px;
+        height: 5px;
+        /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+        background: transparent;
+        /*leave room for the larger thumb to overflow with a transparent border */
+        border-color: transparent;
+        border-width: 6px 0;
+        /*remove default tick marks*/
+        color: transparent;
+        z-index: -4;
+    }
+
+    input[type=range]::-ms-fill-lower {
+        background: #777;
+        border-radius: 10px;
+    }
+
+    input[type=range]::-ms-fill-upper {
+        background: #ddd;
+        border-radius: 10px;
+    }
+
+    input[type=range]::-ms-thumb {
+        border: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: red;
+    }
+
+    input[type=range]:focus::-ms-fill-lower {
+        background: #888;
+    }
+
+    input[type=range]:focus::-ms-fill-upper {
+        background: #ccc;
+    }
+
+.blog-wrap-grid{
+  height:95%;
+}
+
+.topbar-right.d-flex.align-items-center.custom-j-1 {
+    background: #4c8afd;
+    padding: 10px 18px;
+}
+
+a.text-success.custom-text-1 {
+    color: white !important;
+}
+
+button.btn.btn-secondary.text-success.dropdown-toggle.btn-select-language.custom-btn-1 {
+    color: white !important;
+}
+.featured_slick_gallery-slide .slick-dots{
+      top: 84%!important;
+  bottom:unset!important;
+}
+.custom_sides_list_property_detail{padding:0 !important;}
+.property-detail-breadcrumb-custom{
+	color: white;
+	background: unset;
+}
+.property-detail-breadcrumb-custom:hover{
+	background: unset !important;
+  	color: unset !important;
+}
+.nav-tabs .nav-link{
+  	margin-right: 0 !important;
+}
+
+.dashboard-stat{height:110px;}
+.dashboard-stat-icon{right: unset;padding-left: 19px;font-size: 50px;}
+.dash-stst-div{
+  	border-left: 1px solid #ffffff99;
+    height: 74px;
+    position: absolute;
+    left: 88px;
+    top: 20px;
+}
+.dashboard-stat-content{left:113px;top:55%;}
+.listing-detail-footer{margin-top: unset;}

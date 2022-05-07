@@ -22,6 +22,26 @@ return [
     ],
 
     [
+        'name' => 'Property Details',
+        'flag' => 'property_detail.index',
+    ],
+    [
+        'name'        => 'Create',
+        'flag'        => 'property_detail.create',
+        'parent_flag' => 'property_detail.index',
+    ],
+    [
+        'name'        => 'Edit',
+        'flag'        => 'property_detail.edit',
+        'parent_flag' => 'property_detail.index',
+    ],
+    [
+        'name'        => 'Delete',
+        'flag'        => 'property_detail.destroy',
+        'parent_flag' => 'property_detail.index',
+    ],
+
+    [
         'name' => 'Property Features',
         'flag' => 'property_feature.index',
     ],

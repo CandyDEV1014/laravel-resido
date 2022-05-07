@@ -41,10 +41,6 @@ class Property extends BaseModel
         'content',
         'location',
         'images',
-        'number_bedroom',
-        'number_bathroom',
-        'number_floor',
-        'square',
         'price',
         'status',
         'is_featured',
@@ -87,6 +83,14 @@ class Property extends BaseModel
         'expire_date',
         'sold_expire_date'
     ];
+
+    /**
+     * @return BelongsToMany
+     */
+    public function details(): BelongsToMany
+    {
+        return $this->belongsToMany(Detail::class, 're_property_details', 'property_id', 'detail_id')->withPivot('value');
+    }
 
     /**
      * @return BelongsToMany

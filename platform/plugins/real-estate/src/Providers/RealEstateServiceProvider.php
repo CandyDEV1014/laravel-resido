@@ -18,6 +18,7 @@ use Botble\RealEstate\Models\Consult;
 use Botble\RealEstate\Models\Currency;
 use Botble\RealEstate\Models\Facility;
 use Botble\RealEstate\Models\Feature;
+use Botble\RealEstate\Models\Detail;
 use Botble\RealEstate\Models\Package;
 use Botble\RealEstate\Models\Property;
 use Botble\RealEstate\Models\Transaction;
@@ -31,6 +32,7 @@ use Botble\RealEstate\Repositories\Caches\ConsultCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\CurrencyCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\FacilityCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\FeatureCacheDecorator;
+use Botble\RealEstate\Repositories\Caches\DetailCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\PackageCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\PropertyCacheDecorator;
 use Botble\RealEstate\Repositories\Caches\ReviewCacheDecorator;
@@ -44,6 +46,7 @@ use Botble\RealEstate\Repositories\Eloquent\ConsultRepository;
 use Botble\RealEstate\Repositories\Eloquent\CurrencyRepository;
 use Botble\RealEstate\Repositories\Eloquent\FacilityRepository;
 use Botble\RealEstate\Repositories\Eloquent\FeatureRepository;
+use Botble\RealEstate\Repositories\Eloquent\DetailRepository;
 use Botble\RealEstate\Repositories\Eloquent\PackageRepository;
 use Botble\RealEstate\Repositories\Eloquent\PropertyRepository;
 use Botble\RealEstate\Repositories\Eloquent\TransactionRepository;
@@ -57,6 +60,7 @@ use Botble\RealEstate\Repositories\Interfaces\ConsultInterface;
 use Botble\RealEstate\Repositories\Interfaces\CurrencyInterface;
 use Botble\RealEstate\Repositories\Interfaces\FacilityInterface;
 use Botble\RealEstate\Repositories\Interfaces\FeatureInterface;
+use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Repositories\Interfaces\PackageInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Botble\RealEstate\Repositories\Interfaces\TransactionInterface;
@@ -84,6 +88,12 @@ class RealEstateServiceProvider extends ServiceProvider
         $this->app->singleton(PropertyInterface::class, function () {
             return new PropertyCacheDecorator(
                 new PropertyRepository(new Property)
+            );
+        });
+
+        $this->app->bind(DetailInterface::class, function () {
+            return new DetailCacheDecorator(
+                new DetailRepository(new Detail)
             );
         });
 
@@ -217,13 +227,13 @@ class RealEstateServiceProvider extends ServiceProvider
                     'permissions' => ['property.index'],
                 ])
                 ->registerItem([
-                    'id'          => 'cms-plugins-property',
-                    'priority'    => 0,
+                    'id'          => 'cms-plugins-re-details',
+                    'priority'    => 1,
                     'parent_id'   => 'cms-plugins-real-estate',
-                    'name'        => 'plugins/real-estate::property.name',
+                    'name'        => 'plugins/real-estate::detail.name',
                     'icon'        => null,
-                    'url'         => route('property.index'),
-                    'permissions' => ['property.index'],
+                    'url'         => route('property_detail.index'),
+                    'permissions' => ['property_detail.index'],
                 ])
                 ->registerItem([
                     'id'          => 'cms-plugins-re-feature',
@@ -340,6 +350,11 @@ class RealEstateServiceProvider extends ServiceProvider
                 'description',
             ]);
 
+            LanguageAdvancedManager::registerModule(Detail::class, [
+                'name',
+                'features',
+            ]);
+
             LanguageAdvancedManager::registerModule(Feature::class, [
                 'name',
             ]);
@@ -363,6 +378,7 @@ class RealEstateServiceProvider extends ServiceProvider
                 Language::registerModule([
                     Property::class,
                     Feature::class,
+                    Detail::class,
                     Category::class,
                     Type::class,
                     Facility::class,

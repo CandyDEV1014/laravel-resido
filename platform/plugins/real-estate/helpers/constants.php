@@ -12,6 +12,10 @@ if (!defined('ACTION_BEFORE_UPDATE_PROPERTY')) {
     define('ACTION_BEFORE_UPDATE_PROPERTY', 'property_before_update');
 }
 
+if (!defined('PROPERTY_DETAIL_MODULE_SCREEN_NAME')) {
+    define('PROPERTY_DETAIL_MODULE_SCREEN_NAME', 'detail');
+}
+
 if (!defined('FEATURE_MODULE_SCREEN_NAME')) {
     define('FEATURE_MODULE_SCREEN_NAME', 'property_featured');
 }

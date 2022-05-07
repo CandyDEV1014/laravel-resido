@@ -1,3 +1,9 @@
+@php
+$details = $property->details()
+    ->where('status', Botble\Base\Enums\BaseStatusEnum::PUBLISHED)
+    ->orderBy('order', 'DESC')
+    ->get();
+@endphp
 <div class="property_block_wrap style-2">
 
     <div class="property_block_wrap_header">
@@ -8,28 +14,13 @@
     <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
         <div class="block-body">
             <ul class="detail_features">
-                @if ($property->number_bedroom)
+                @foreach($details as $detail)
                 <li>
-                    <strong>{{ __('Bedrooms:') }}</strong>
-                    {{ number_format($property->number_bedroom) }} {{ __('Beds') }}
+                    <strong>{{ $detail->title }}: </strong>
+                    {{ $detail->pivot->value }} {{ $detail->alt }}
                 </li>
-                @endif
-                @if ($property->number_bathroom)
-                <li>
-                    <strong>{{ __('Bathrooms:') }}</strong>
-                    {{ number_format($property->number_bathroom) }} {{ __('Bath') }}
-                </li>
-                @endif
-                @if ($property->square)
-                <li>
-                    <strong>{{ __('Square:') }}</strong>{{ $property->square_text }}
-                </li>
-                @endif
-                @if ($property->number_floor)
-                <li>
-                    <strong>{{ __('Floors:') }}</strong>{{ number_format($property->number_floor) }}
-                </li>
-                @endif
+                @endforeach
+                
                 @if ($property->category)
                 <li><strong>{{ __('Property Type:') }}</strong>{{ $property->category_name }} {{ !empty($property->subcategory_id) ? ' , ' . $property->subcategory->name : '' }}</li>
                 @endif

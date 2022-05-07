@@ -234,7 +234,6 @@ abstract class RepositoriesAbstract implements RepositoryInterface
         } else {
             return false;
         }
-
         $this->resetModel();
 
         if ($item->save()) {

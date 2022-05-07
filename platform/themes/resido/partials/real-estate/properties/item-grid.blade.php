@@ -1,6 +1,11 @@
 @php
     $img_slider = isset($img_slider) ? $img_slider : true;
     $is_lazyload = isset($lazyload) ? $lazyload : true;
+    $details = $property->details()
+        ->where('status', Botble\Base\Enums\BaseStatusEnum::PUBLISHED)
+        ->where('is_featured', 1)
+        ->orderBy('order', 'DESC')
+        ->get();
 @endphp
 
 <div class="property-listing property-2 {{ $class_extend ?? '' }}"
@@ -79,24 +84,14 @@
 
     <div class="price-features-wrapper">
         <div class="list-fx-features">
+            @foreach($details as $detail)
             <div class="listing-card-info-icon">
                 <div class="inc-fleat-icon">
-                    <img src="{{ Theme::asset()->url('img/bed.svg') }}" width="13" alt="" title="<?php echo e(__('Bedroom')); ?>" />
+                    <i class="{{ $detail->icon }}"></i>
                 </div>
-                {!! clean($property->number_bedroom) !!} {!! __('Beds') !!}
+                {!! clean($detail->pivot->value) !!} {{ $detail->alt }}
             </div>
-            <div class="listing-card-info-icon">
-                <div class="inc-fleat-icon">
-                    <img src="{{ Theme::asset()->url('img/bathtub.svg') }}" width="13" alt="" title="<?php echo e(__('Bathroom')); ?>" />
-                </div>
-                {!! clean($property->number_bathroom) !!} {!! __('Bath') !!}
-            </div>
-            <div class="listing-card-info-icon">
-                <div class="inc-fleat-icon">
-                    <img src="{{ Theme::asset()->url('img/move.svg') }}" width="13" alt="" title="<?php echo e(__('Bathroom')); ?>" />
-                </div>
-                {{ $property->square_text }}
-            </div>
+            @endforeach
         </div>
     </div>
 

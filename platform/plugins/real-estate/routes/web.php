@@ -32,6 +32,17 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
             ]);
         });
 
+        Route::group(['prefix' => 'property-details', 'as' => 'property_detail.'], function () {
+            Route::resource('', 'DetailController')
+                ->parameters(['' => 'property_detail']);
+
+            Route::delete('items/destroy', [
+                'as'         => 'deletes',
+                'uses'       => 'DetailController@deletes',
+                'permission' => 'property_detail.destroy',
+            ]);
+        });
+
         Route::group(['prefix' => 'property-features', 'as' => 'property_feature.'], function () {
             Route::resource('', 'FeatureController')
                 ->parameters(['' => 'property_feature']);

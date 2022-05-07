@@ -15,6 +15,8 @@ class Plugin extends PluginOperationAbstract
         Schema::dropIfExists('re_properties');
         Schema::dropIfExists('re_features');
         Schema::dropIfExists('re_property_features');
+        Schema::dropIfExists('re_details');
+        Schema::dropIfExists('re_property_details');
         Schema::dropIfExists('re_categories');
         Schema::dropIfExists('re_currencies');
         Schema::dropIfExists('re_facilities_distances');

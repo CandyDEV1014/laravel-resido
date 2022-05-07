@@ -226,51 +226,6 @@ class PropertyRepository extends RepositoriesAbstract implements PropertyInterfa
             });
         }
 
-        if ($filters['bedroom']) {
-            if ($filters['bedroom'] < 5) {
-                $this->model = $this->model->where('re_properties.number_bedroom', $filters['bedroom']);
-            } else {
-                $this->model = $this->model->where('re_properties.number_bedroom', '>=', $filters['bedroom']);
-            }
-        }
-
-        if ($filters['bathroom']) {
-            if ($filters['bathroom'] < 5) {
-                $this->model = $this->model->where('re_properties.number_bathroom', $filters['bathroom']);
-            } else {
-                $this->model = $this->model->where('re_properties.number_bathroom', '>=', $filters['bathroom']);
-            }
-        }
-
-        if ($filters['floor']) {
-            if ($filters['floor'] < 5) {
-                $this->model = $this->model->where('re_properties.number_floor', $filters['floor']);
-            } else {
-                $this->model = $this->model->where('re_properties.number_floor', '>=', $filters['floor']);
-            }
-        }
-
-        if ($filters['min_square'] !== null || $filters['max_square'] !== null) {
-            $this->model = $this->model
-                ->where(function ($query) use ($filters) {
-                    $minSquare = Arr::get($filters, 'min_square');
-                    $maxSquare = Arr::get($filters, 'max_square');
-
-                    /**
-                     * @var \Illuminate\Database\Query\Builder $query
-                     */
-                    if ($minSquare !== null) {
-                        $query = $query->where('re_properties.square', '>=', $minSquare);
-                    }
-
-                    if ($maxSquare !== null) {
-                        $query = $query->where('re_properties.square', '<=', $maxSquare);
-                    }
-
-                    return $query;
-                });
-        }
-
         if ($filters['min_price'] !== null || $filters['max_price'] !== null) {
             $this->model = $this->model
                 ->where(function ($query) use ($filters) {

@@ -29,10 +29,6 @@ class CreateRealEstateTable extends Migration
             $table->longText('content')->nullable();
             $table->string('location')->nullable();
             $table->text('images')->nullable();
-            $table->integer('number_bedroom')->nullable();
-            $table->integer('number_bathroom')->nullable();
-            $table->integer('number_floor')->nullable();
-            $table->integer('square')->nullable();
             $table->decimal('price', 15)->nullable();
             $table->integer('currency_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->nullable();
@@ -50,6 +46,18 @@ class CreateRealEstateTable extends Migration
             $table->string('longitude', 25)->nullable();
             $table->integer('type_id')->unsigned()->references('id')->on('re_types')->index();
             $table->timestamps();
+        });
+
+        Schema::create('re_details', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 120);
+            $table->integer('type', 10)->nullable();
+            $table->string('status', 60)->default('published');
+        });
+
+        Schema::create('re_property_details', function (Blueprint $table) {
+            $table->integer('property_id')->unsigned();
+            $table->integer('detail_id')->unsigned();
         });
 
         Schema::create('re_features', function (Blueprint $table) {

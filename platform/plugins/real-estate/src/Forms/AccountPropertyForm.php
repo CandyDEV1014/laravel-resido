@@ -23,6 +23,7 @@ use Botble\RealEstate\Repositories\Interfaces\CategoryInterface;
 use Botble\RealEstate\Repositories\Interfaces\CurrencyInterface;
 use Botble\RealEstate\Repositories\Interfaces\FacilityInterface;
 use Botble\RealEstate\Repositories\Interfaces\FeatureInterface;
+use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Botble\RealEstate\Repositories\Interfaces\TypeInterface;
 use Botble\RealEstate\Repositories\Interfaces\AccountPackageInterface;
@@ -40,6 +41,11 @@ class AccountPropertyForm extends FormAbstract
      * @var PropertyInterface
      */
     protected $propertyRepository;
+
+    /**
+     * @var DetailInterface
+     */
+    protected $detailRepository;
 
     /**
      * @var FeatureInterface
@@ -84,6 +90,7 @@ class AccountPropertyForm extends FormAbstract
     /**
      * PropertyForm constructor.
      * @param PropertyInterface $propertyRepository
+     * @param DetailInterface $featureRepository
      * @param FeatureInterface $featureRepository
      * @param CurrencyInterface $currencyRepository
      * @param CountryInterface $countryRepository
@@ -97,6 +104,7 @@ class AccountPropertyForm extends FormAbstract
      */
     public function __construct(
         PropertyInterface $propertyRepository,
+        DetailInterface $detailRepository,
         FeatureInterface $featureRepository,
         CurrencyInterface $currencyRepository,
         CountryInterface $countryRepository,
@@ -109,6 +117,7 @@ class AccountPropertyForm extends FormAbstract
     ) {
         parent::__construct();
         $this->propertyRepository = $propertyRepository;
+        $this->detailRepository = $detailRepository;
         $this->featureRepository = $featureRepository;
         $this->currencyRepository = $currencyRepository;
         $this->countryRepository = $countryRepository;
@@ -201,6 +210,13 @@ class AccountPropertyForm extends FormAbstract
             $type_id = $this->getModel()->type()->pluck('re_property_types.id')->first();
         }
 
+        $selectedDetails = [];
+        if ($this->getModel()) {
+            $selectedDetails = $this->getModel()->details()->pluck('re_property_details.value', 're_details.id')->all();
+        }
+
+        $details = $this->detailRepository->allBy([], [], ['re_details.id', 're_details.name', 're_details.type', 're_details.order', 're_details.features']);
+
         $selectedFeatures = [];
         if ($this->getModel()) {
             $selectedFeatures = $this->getModel()->features()->pluck('re_features.id')->all();
@@ -240,15 +256,6 @@ class AccountPropertyForm extends FormAbstract
                 'attr'       => [
                     'placeholder'  => trans('plugins/real-estate::property.form.name'),
                     'data-counter' => 120,
-                ],
-            ])
-            ->addMetaBoxes([
-                'type_id'   => [
-                    'title'    => trans('plugins/real-estate::property.form.type'),
-                    'content'  => view('plugins/real-estate::partials.form-types',
-                        compact('types','type_id'))->render(),
-                        //compact('types'))->render(),
-                    'priority' => 1,
                 ],
             ])
             ->add('description', 'textarea', [
@@ -358,52 +365,6 @@ class AccountPropertyForm extends FormAbstract
             ->add('rowClose', 'html', [
                 'html' => '</div>',
             ])
-            ->add('rowOpen1', 'html', [
-                'html' => '<div class="row">',
-            ])
-            ->add('number_bedroom', 'number', [
-                'label'      => trans('plugins/real-estate::property.form.number_bedroom'),
-                'label_attr' => ['class' => 'control-label'],
-                'wrapper'    => [
-                    'class' => 'form-group mb-3 col-md-3',
-                ],
-                'attr'       => [
-                    'placeholder' => trans('plugins/real-estate::property.form.number_bedroom'),
-                ],
-            ])
-            ->add('number_bathroom', 'number', [
-                'label'      => trans('plugins/real-estate::property.form.number_bathroom'),
-                'label_attr' => ['class' => 'control-label'],
-                'wrapper'    => [
-                    'class' => 'form-group mb-3 col-md-3',
-                ],
-                'attr'       => [
-                    'placeholder' => trans('plugins/real-estate::property.form.number_bathroom'),
-                ],
-            ])
-            ->add('number_floor', 'number', [
-                'label'      => trans('plugins/real-estate::property.form.number_floor'),
-                'label_attr' => ['class' => 'control-label'],
-                'wrapper'    => [
-                    'class' => 'form-group mb-3 col-md-3',
-                ],
-                'attr'       => [
-                    'placeholder' => trans('plugins/real-estate::property.form.number_floor'),
-                ],
-            ])
-            ->add('square', 'number', [
-                'label'      => trans('plugins/real-estate::property.form.square', ['unit' => setting('real_estate_square_unit', 'm²') ? '(' . setting('real_estate_square_unit', 'm²') . ')' : null]),
-                'label_attr' => ['class' => 'control-label'],
-                'wrapper'    => [
-                    'class' => 'form-group mb-3 col-md-3',
-                ],
-                'attr'       => [
-                    'placeholder' => trans('plugins/real-estate::property.form.square'),
-                ],
-            ])
-            ->add('rowClose1', 'html', [
-                'html' => '</div>',
-            ])
             ->add('rowOpen2', 'html', [
                 'html' => '<div class="row">',
             ])
@@ -499,17 +460,29 @@ class AccountPropertyForm extends FormAbstract
                 ],
             ])
             ->addMetaBoxes([
+                'details'   => [
+                    'title'    => trans('plugins/real-estate::property.form.details'),
+                    'content'  => view('plugins/real-estate::partials.form-details',
+                        compact('selectedDetails', 'details'))->render(),
+                    'priority' => 0,
+                ],
+                'type_id'   => [
+                    'title'    => trans('plugins/real-estate::property.form.type'),
+                    'content'  => view('plugins/real-estate::partials.form-types',
+                        compact('types','type_id'))->render(),
+                    'priority' => 1,
+                ],
                 'features'   => [
                     'title'    => trans('plugins/real-estate::property.form.features'),
                     'content'  => view('plugins/real-estate::partials.form-features',
                         compact('selectedFeatures', 'features', 'limit_features'))->render(),
-                    'priority' => 1,
+                    'priority' => 2,
                 ],
                 'facilities' => [
                     'title'    => trans('plugins/real-estate::property.distance_key'),
                     'content'  => view('plugins/real-estate::partials.form-facilities',
                         compact('facilities', 'selectedFacilities', 'limit_facilities')),
-                    'priority' => 0,
+                    'priority' => 3,
                 ],
             ])
 			->add('status', 'customSelect', [

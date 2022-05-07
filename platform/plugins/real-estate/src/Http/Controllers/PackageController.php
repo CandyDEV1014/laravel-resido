@@ -64,7 +64,6 @@ class PackageController extends BaseController
     public function store(PackageAddRequest $request, BaseHttpResponse $response)
     {   
         $request->merge(['features' => json_encode($request->input('features'))]);
-        
         $package = $this->packageRepository->createOrUpdate($request->input());
 
         event(new CreatedContentEvent(PACKAGE_MODULE_SCREEN_NAME, $request, $package));

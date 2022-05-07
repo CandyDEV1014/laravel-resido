@@ -11,6 +11,7 @@ use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\RealEstate\Forms\PropertyForm;
 use Botble\RealEstate\Http\Requests\PropertyRequest;
+use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Repositories\Interfaces\FeatureInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Botble\RealEstate\Services\SaveFacilitiesService;
@@ -33,6 +34,11 @@ class PropertyController extends BaseController
     protected $propertyRepository;
 
     /**
+     * @var DetailInterface
+     */
+    protected $detailRepository;
+
+    /**
      * @var FeatureInterface
      */
     protected $featureRepository;
@@ -40,13 +46,16 @@ class PropertyController extends BaseController
     /**
      * PropertyController constructor.
      * @param PropertyInterface $propertyRepository
+     * @param DetailInterface $detailRepository
      * @param FeatureInterface $featureRepository
      */
     public function __construct(
         PropertyInterface $propertyRepository,
+        DetailInterface $detailRepository,
         FeatureInterface $featureRepository
     ) {
         $this->propertyRepository = $propertyRepository;
+        $this->detailRepository = $detailRepository;
         $this->featureRepository = $featureRepository;
     }
 
@@ -98,7 +107,8 @@ class PropertyController extends BaseController
 
         if ($property) {
             $property->features()->sync($request->input('features', []));
-
+            $property->details()->sync($request->input('details', []));
+            
             $saveFacilitiesService->execute($property, $request->input('facilities', []));
         }
 
@@ -149,7 +159,8 @@ class PropertyController extends BaseController
         event(new UpdatedContentEvent(PROPERTY_MODULE_SCREEN_NAME, $request, $property));
 
         $property->features()->sync($request->input('features', []));
-
+        $property->details()->sync($request->input('details', []));
+        
         $saveFacilitiesService->execute($property, $request->input('facilities', []));
 
         return $response

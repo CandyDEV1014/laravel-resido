@@ -1,3 +1,10 @@
+@php
+$details = $property->details()
+    ->where('status', Botble\Base\Enums\BaseStatusEnum::PUBLISHED)
+    ->where('is_featured', 1)
+    ->orderBy('order', 'DESC')
+    ->get();
+@endphp
 <!-- ============================ Hero Banner  Start================================== -->
 <div class="home-slider margin-bottom-0">
     @foreach ($properties as $property)
@@ -22,9 +29,9 @@
 
                                 <div class="slide-property-info">
                                     <ul>
-                                        <li>{!! __('Beds') !!}: {!! clean($property->number_bedroom) !!}</li>
-                                        <li>{!! __('Bath') !!}: {!! clean($property->number_bathroom) !!}</li>
-                                        <li>{!! __('Sqft') !!}: {!! clean($property->square_text) !!}</li>
+                                        @foreach($details as $detail)
+                                        <li>{{ !! clean($detail->alt) }}: {!! clean($detail->pivot->value) !!}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
 

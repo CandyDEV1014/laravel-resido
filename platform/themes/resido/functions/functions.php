@@ -325,6 +325,7 @@ if (is_plugin_active('location')) {
                 break;
             case \Botble\RealEstate\Models\Facility::class:
             case \Botble\RealEstate\Models\Feature::class:
+            case \Botble\RealEstate\Models\Detail::class:
                 $form
                     ->addCustomField('themeIcon', ThemeIconField::class)
                     ->modify('icon', 'themeIcon', ['label' => __('Icon')], true);

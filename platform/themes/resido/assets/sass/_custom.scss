@@ -368,7 +368,15 @@ $primaryColor: #2b4db9;
         a {
             color: #2d3954;
         }
+        
+        .detail {
+            margin-right: 5px;
+        }
+        .detail:last-child {
+            margin-right: 0px;
+        }
     }
+
 }
 
 #map {

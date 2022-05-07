@@ -9012,8 +9012,8 @@ ul.detail_features {
 }
 
 ul.detail_features li {
-  width: 33.333333%;
-  flex: 0 0 33.333333%;
+  width: 50%;
+  flex: 0 0 50%;
   display: inline-block;
   font-size: 13px;
   color: #546cb1;
@@ -15220,6 +15220,12 @@ footer .choose-currency {
 }
 .leaflet-popup-content .infomarker a {
   color: #2d3954;
+}
+.leaflet-popup-content .infomarker .detail {
+  margin-right: 5px;
+}
+.leaflet-popup-content .infomarker .detail:last-child {
+  margin-right: 0px;
 }
 
 #map {

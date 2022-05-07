@@ -165,6 +165,7 @@ class AccountPropertyController extends Controller
 
         if ($property) {
             $property->features()->sync($request->input('features', []));
+            $property->details()->sync($request->input('details', []));
 
             $saveFacilitiesService->execute($property, $request->input('facilities', []));
         }
@@ -275,7 +276,8 @@ class AccountPropertyController extends Controller
         $this->propertyRepository->createOrUpdate($property);
 
         $property->features()->sync($request->input('features', []));
-
+        $property->details()->sync($request->input('details', []));
+        
         $saveFacilitiesService->execute($property, $request->input('facilities', []));
 
         event(new UpdatedContentEvent(PROPERTY_MODULE_SCREEN_NAME, $request, $property));

@@ -1,3 +1,11 @@
+@php
+    $details = $property->details()
+        ->where('status', Botble\Base\Enums\BaseStatusEnum::PUBLISHED)
+        ->where('is_featured', 1)
+        ->orderBy('order', 'DESC')
+        ->limit(3)
+        ->get();
+@endphp
 <div class="d-flex">
     <div class="blii">
         <img class="lazy" src="{{ get_image_loading() }}" data-src="{{ $property->image_thumb }}" height="100" width="100" alt="{{ $property->name }}">
@@ -6,13 +14,12 @@
         <h4><a href="{{ $property->url }}" target="_blank">{{ $property->name }}</a></h4>
         <div class="mb-1"><span>{{ $property->city_name }}</span></div>
         <div>
-            <span> <i class="ti-location-pin"></i> {{ $property->square_text }}</span> &nbsp; &nbsp;
-            <span>
-                <i><img src="{{ Theme::asset()->url('img/bed.svg') }}" alt="icon" width="13"></i>
-                <i class="vti">{{ $property->number_bedroom }}</i></span> &nbsp; &nbsp; <span>
-                <i><img src="{{ Theme::asset()->url('img/bathtub.svg') }}" alt="icon" width="13"></i>
-                <i class="vti">{{ $property->number_bathroom }}</i>
-            </span>
+            @foreach($details as $detail)
+                <span class="detail">
+                    <i class="{{ $detail->icon }}"></i>
+                    <i class="vti">{{ $detail->pivot->value }}</i>
+                </span>
+            @endforeach
         </div>
         <div class="lists_property_price">
             <div class="lists_property_price_value">

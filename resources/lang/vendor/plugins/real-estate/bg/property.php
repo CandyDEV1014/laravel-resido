@@ -4,6 +4,12 @@ return [
     'name' => 'Properties',
     'create' => 'New property',
     'edit' => 'Edit property',
+    'messages' => [
+        'request' => [
+            'name_required'  => 'Name is required',
+            'content_required'  => 'Content is required',
+        ],
+    ],
     'form' => [
         'main_info' => 'General information',
         'basic_info' => 'Basic information',

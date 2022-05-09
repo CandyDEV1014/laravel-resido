@@ -70,6 +70,12 @@ class DetailController extends BaseController
 
         event(new CreatedContentEvent(PROPERTY_DETAIL_MODULE_SCREEN_NAME, $request, $detail));
 
+        $categories = $request->input('categories');
+
+        if (!empty($categories) && is_array($categories)) {
+            $detail->categories()->sync($categories);
+        }
+
         return $response
             ->setPreviousUrl(route('property_detail.index'))
             ->setNextUrl(route('property_detail.edit', $detail->id))
@@ -104,9 +110,15 @@ class DetailController extends BaseController
 
         $detail->fill($request->input());
         $this->detailRepository->createOrUpdate($detail);
-
+        
         event(new UpdatedContentEvent(PROPERTY_DETAIL_MODULE_SCREEN_NAME, $request, $detail));
 
+        $categories = $request->input('categories');
+
+        if (!empty($categories) && is_array($categories)) {
+            $detail->categories()->sync($categories);
+        }
+        
         return $response
             ->setPreviousUrl(route('property_detail.index'))
             ->setMessage(trans('core/base::notices.update_success_message'));

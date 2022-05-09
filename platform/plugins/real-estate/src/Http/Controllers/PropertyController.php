@@ -11,6 +11,7 @@ use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\RealEstate\Forms\PropertyForm;
 use Botble\RealEstate\Http\Requests\PropertyRequest;
+use Botble\RealEstate\Http\Requests\PropertyAddRequest;
 use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Repositories\Interfaces\FeatureInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
@@ -89,7 +90,7 @@ class PropertyController extends BaseController
      * @return BaseHttpResponse
      * @throws FileNotFoundException
      */
-    public function store(PropertyRequest $request, BaseHttpResponse $response, SaveFacilitiesService $saveFacilitiesService)
+    public function store(PropertyAddRequest $request, BaseHttpResponse $response, SaveFacilitiesService $saveFacilitiesService)
     {
         $request->merge([
             'expire_date' => now()->addDays(RealEstateHelper::propertyExpiredDays()),
@@ -142,7 +143,7 @@ class PropertyController extends BaseController
      * @return BaseHttpResponse
      * @throws FileNotFoundException
      */
-    public function update($id, PropertyRequest $request, BaseHttpResponse $response, SaveFacilitiesService $saveFacilitiesService)
+    public function update($id, PropertyAddRequest $request, BaseHttpResponse $response, SaveFacilitiesService $saveFacilitiesService)
     {
         $property = $this->propertyRepository->findOrFail($id);
 

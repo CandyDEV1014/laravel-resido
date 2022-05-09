@@ -8,7 +8,7 @@ use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Http\Requests\PropertyRequest as BaseRequest;
 use Illuminate\Validation\Rule;
 
-class AccountPropertyRequest extends BaseRequest
+class AccountPropertyAddRequest extends BaseRequest
 {
 
     /**
@@ -26,37 +26,35 @@ class AccountPropertyRequest extends BaseRequest
             'status'          => Rule::in(PropertyStatusEnum::values()),
         ];
 
-        $details = app(DetailInterface::class)->allBy(['re_details.status' => BaseStatusEnum::PUBLISHED]);
-
-        if (count($details)) {
-            foreach($details as $key => $detail)
+        if ($this->request->get('details')) {
+            foreach($this->request->get('details') as $key => $val)
             {
+                $detail = app(DetailInterface::class)->getFirstBy(['id' => $key]);
                 if ($detail->is_required) {
-                    $rules['details.' . $detail->id . '.value'] = 'required';
+                    $rules['details.' . $key . '.value'] = 'required';
                 }
+                
             }
         }
 
         return $rules;
     }
 
-    /**
-     * @return array
-     */
     public function messages()
     {
         $message = [
             'name.required'  => trans('plugins/real-estate::account-property.messages.request.name_required'),
             'content.required' => trans('plugins/real-estate::account-property.messages.request.content_required'),
         ];
-        $details = app(DetailInterface::class)->allBy(['re_details.status' => BaseStatusEnum::PUBLISHED]);
 
-        if (count($details)) {
-            foreach($details as $key => $detail)
+        if ($this->request->get('details')) {
+            foreach($this->request->get('details') as $key => $val)
             {
+                $detail = app(DetailInterface::class)->getFirstBy(['id' => $key]);
                 if ($detail->is_required) {
-                    $message['details.' . $detail->id . '.value.required'] = $detail->name . ' is required';
+                    $message['details.' . $key . '.value.required'] = $detail->name . ' is required';
                 }
+                
             }
         }
 

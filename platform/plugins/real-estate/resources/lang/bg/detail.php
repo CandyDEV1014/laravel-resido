@@ -17,16 +17,18 @@ return [
         'name'        => 'Title',
         'title'       => 'Title',
         'alt'         => 'Alt title',
-        'icon'       => 'Icon',
+        'icon'        => 'Icon',
         'type'        => 'Type',
         'features'    => 'Features',
         'order'       => 'Order',
         'is_featured' => 'Is featured',
+        'categories'  => 'Categories',
     ],
     'detail_type'    => [
         'text'       => 'Text',
         'number'     => 'Number',
         'date'       => 'Date',
+        'year'       => 'Year',
         'selectbox'  => 'Selectbox',
     ]
 ];

@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Theme\Resido\Http\Controllers', 'middleware' => ['
             ->name('public.ajax.post-reviews');
 
         Route::get('ajax/sub-categories', 'ResidoController@ajaxGetSubCategories')->name('public.ajax.sub-categories');
+        Route::get('ajax/details', 'ResidoController@ajaxGetDetails')->name('public.ajax.details');
     });
 });
 

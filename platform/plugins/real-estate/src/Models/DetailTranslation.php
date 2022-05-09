@@ -12,7 +12,7 @@ class DetailTranslation extends BaseModel
      *
      * @var string
      */
-    protected $table = 're_packages_translations';
+    protected $table = 're_details_translations';
 
     /**
      * @var array
@@ -21,6 +21,8 @@ class DetailTranslation extends BaseModel
         'lang_code',
         're_details_id',
         'name',
+        'title',
+        'alt',
         'features',
     ];
 

@@ -21,7 +21,9 @@ return [
         'type'        => 'Type',
         'features'    => 'Features',
         'order'       => 'Order',
-        'is_featured' => 'Is featured',
+        'is_featured' => 'Is featured?',
+        'is_required' => 'Is required?',
+        'categories'  => 'Categories',
     ],
     'table'    => [
         'type' => 'Type',
@@ -30,6 +32,7 @@ return [
         'text'       => 'Text',
         'number'     => 'Number',
         'date'       => 'Date',
+        'year'       => 'Year',
         'selectbox'  => 'Selectbox',
     ]
 ];

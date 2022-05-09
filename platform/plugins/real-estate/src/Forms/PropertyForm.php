@@ -191,7 +191,12 @@ class PropertyForm extends FormAbstract
             $selectedDetails = $this->getModel()->details()->pluck('re_property_details.value', 're_details.id')->all();
         }
 
-        $details = $this->detailRepository->allBy([], [], ['re_details.id', 're_details.name', 're_details.type', 're_details.order', 're_details.features']);
+        // $details = $this->detailRepository->allBy([], [], ['re_details.id', 're_details.name', 're_details.type', 're_details.order', 're_details.features']);
+        if ($this->getModel()){
+            $details = $this->detailRepository->getDetailsByCategory($this->getModel()->category_id);
+        } else {
+            $details = $this->detailRepository->getDetailsByCategory(array_key_first($categoryChoices));
+        }
 
         $selectedFeatures = [];
         if ($this->getModel()) {
@@ -393,6 +398,12 @@ class PropertyForm extends FormAbstract
                 'label_attr'    => ['class' => 'control-label'],
                 'default_value' => false,
             ])
+            ->add('selected_detail', 'hidden', [
+                'value' => json_encode($selectedDetails),
+                'attr' => [
+                    'id' => 'selected_detail'
+                ]
+            ])
             ->addMetaBoxes([
                 'details'   => [
                     'title'    => trans('plugins/real-estate::property.form.details'),
@@ -440,6 +451,7 @@ class PropertyForm extends FormAbstract
                 'label_attr' => ['class' => 'control-label'],
                 'attr'       => [
                     'class' => 'form-control select-search-full',
+                    'data-url' => route('public.ajax.details'),
                 ],
                 'choices'    => $categoryChoices,
             ])
@@ -454,7 +466,6 @@ class PropertyForm extends FormAbstract
                 ],
                 'choices'    => $subcategoryChoices,
             ])
-            ->setBreakFieldPoint('status')
             ->add('author_id', 'autocomplete', [
                 'label'      => trans('plugins/real-estate::property.account'),
                 'label_attr' => [
@@ -470,6 +481,7 @@ class PropertyForm extends FormAbstract
                     ]
                     :
                     ['' => trans('plugins/real-estate::property.select_account')],
-            ]);
+            ])
+            ->setBreakFieldPoint('status');
     }
 }

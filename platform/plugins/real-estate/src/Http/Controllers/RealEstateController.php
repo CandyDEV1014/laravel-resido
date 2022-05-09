@@ -70,7 +70,7 @@ class RealEstateController extends BaseController
         foreach ($request->except(['_token', 'currencies', 'deleted_currencies', config('plugins.real-estate.real-estate.prefix') . 'review_fields']) as $settingKey => $settingValue) {
             $settingStore->set($settingKey, $settingValue);
         }
-
+        
         $settingStore->save();
 
         $currencies = json_decode($request->input('currencies'), true) ?: [];

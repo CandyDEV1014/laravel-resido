@@ -89,7 +89,7 @@
                 <div class="inc-fleat-icon">
                     <i class="{{ $detail->icon }}"></i>
                 </div>
-                {!! clean($detail->pivot->value) !!} {{ $detail->alt }}
+                {!! clean($detail->pivot->value) !!} {{ !! clean($detail->alt) }}
             </div>
             @endforeach
         </div>

@@ -28947,7 +28947,7 @@ Page footer
 .multi-choices-widget ul {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 5px;
+  padding: 1px 0 0 5px;
 }
 .multi-choices-widget ul li {
   display: block;

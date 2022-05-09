@@ -352,6 +352,8 @@ class RealEstateServiceProvider extends ServiceProvider
 
             LanguageAdvancedManager::registerModule(Detail::class, [
                 'name',
+                'title',
+                'alt',
                 'features',
             ]);
 

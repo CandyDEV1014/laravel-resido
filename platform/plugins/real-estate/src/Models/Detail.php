@@ -35,6 +35,7 @@ class Detail extends BaseModel
         'features',
         'order',
         'is_featured',
+        'is_required',
         'status',
     ];
 
@@ -51,5 +52,21 @@ class Detail extends BaseModel
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 're_property_details', 'detail_id', 'property_id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 're_detail_categories');
+    }
+
+    /**
+     * @return Category
+     */
+    public function getFirstCategoryAttribute()
+    {
+        return $this->categories->first();
     }
 }

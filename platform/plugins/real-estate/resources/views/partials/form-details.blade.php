@@ -1,8 +1,7 @@
-@if (count($details))
-<div class="row">
+<div class="row property-details">
     @foreach($details as $key => $detail)
     <div class="form-group col-md-3">
-        <label for="details[{{ $detail->id }}][value]" class="control-label">{{ $detail->name }}</label>
+        <label for="details[{{ $detail->id }}][value]" class="control-label {{ $detail->is_required ? 'required' : '' }}">{{ $detail->name }}</label>
         @switch($detail->type)
             @case('text')
                 <input type="text" 
@@ -32,16 +31,26 @@
                     value="{{ isset($selectedDetails[$detail->id]) ? $selectedDetails[$detail->id] : '' }}" 
                 />
                 @break
-
+            @case('year')
+                <div class="ui-select-wrapper form-group">
+                    <select class="form-control ui-select" name="details[{{ $detail->id }}][value]">
+                        @php $current_year = date('Y'); @endphp
+                        @php $start_year = 1940; @endphp
+                        @for($year = $current_year; $year >= $start_year; $year--)
+                        <option value="{{ $year }}" {{isset($selectedDetails[$detail->id]) && $selectedDetails[$detail->id] == $year ? "selected" : ""}}>{{ $year }}</option>
+                        @endfor
+                    </select>
+                </div>
+                @break;
             @case('selectbox')
                 <div class="ui-select-wrapper form-group">
                     <select class="form-control ui-select" name="details[{{ $detail->id }}][value]">
                         @if ($detail->features)
                             @foreach (json_decode($detail->features, true) as $feature)
                                 @if (count($feature) > 0)
-                                    @if ($value = Arr::get($feature, '0.value') != '')
-                                    <option value="{{ $value }}" 
-                                        {{ isset($selectedDetails[$detail->id]) && $selectedDetails[$detail->id] == $value ? "selected" : "" }}>
+                                    @if (Arr::get($feature, '0.value') != '')
+                                    <option value="{{ Arr::get($feature, '0.value') }}" 
+                                        {{ isset($selectedDetails[$detail->id]) && $selectedDetails[$detail->id] == Arr::get($feature, '0.value') ? "selected" : "" }}>
                                         {{ Arr::get($feature, '0.value') }}
                                     </option>
                                     @endif
@@ -63,11 +72,3 @@
     </div>
     @endforeach
 </div>
-
-<script>
-    $(document).ready(function() {
-        
-    });
-</script>
-
-@endif

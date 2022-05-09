@@ -11,6 +11,7 @@ use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\RealEstate\Enums\ModerationStatusEnum;
 use Botble\RealEstate\Forms\AccountPropertyForm;
 use Botble\RealEstate\Http\Requests\AccountPropertyRequest;
+use Botble\RealEstate\Http\Requests\AccountPropertyAddRequest;
 use Botble\RealEstate\Models\Account;
 use Botble\RealEstate\Models\AccountPackage;
 use Botble\RealEstate\Repositories\Interfaces\AccountActivityLogInterface;
@@ -139,7 +140,7 @@ class AccountPropertyController extends Controller
      * @return BaseHttpResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(
-        AccountPropertyRequest $request,
+        AccountPropertyAddRequest $request,
         BaseHttpResponse $response,
         AccountInterface $accountRepository,
         SaveFacilitiesService $saveFacilitiesService
@@ -249,7 +250,7 @@ class AccountPropertyController extends Controller
      */
     public function update(
         $id,
-        AccountPropertyRequest $request,
+        AccountPropertyAddRequest $request,
         BaseHttpResponse $response,
         SaveFacilitiesService $saveFacilitiesService
     ) {

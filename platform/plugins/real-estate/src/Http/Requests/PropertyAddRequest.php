@@ -9,7 +9,7 @@ use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\Support\Http\Requests\Request;
 use Illuminate\Validation\Rule;
 
-class PropertyRequest extends Request
+class PropertyAddRequest extends Request
 {
 
     /**
@@ -19,8 +19,6 @@ class PropertyRequest extends Request
      */
     public function rules()
     {
-        
-        // $details = $this->detailRepository->allBy([], [], ['re_details.id', 're_details.name', 're_details.type', 're_details.order', 're_details.features']);
         $rules = [
             'name'              => 'required',
             'description'       => 'max:350',
@@ -35,38 +33,36 @@ class PropertyRequest extends Request
             'status'            => Rule::in(PropertyStatusEnum::values()),
             'moderation_status' => Rule::in(ModerationStatusEnum::values()),
         ];
-
-        $details = app(DetailInterface::class)->allBy(['re_details.status' => BaseStatusEnum::PUBLISHED]);
-
-        if (count($details)) {
-            foreach($details as $key => $detail)
+        
+        if ($this->request->get('details')) {
+            foreach($this->request->get('details') as $key => $val)
             {
+                $detail = app(DetailInterface::class)->getFirstBy(['id' => $key]);
                 if ($detail->is_required) {
-                    $rules['details.' . $detail->id . '.value'] = 'required';
+                    $rules['details.' . $key . '.value'] = 'required';
                 }
+                
             }
         }
-
+        
         return $rules;
     }
 
-    /**
-     * @return array
-     */
     public function messages()
     {
         $message = [
             'name.required'  => trans('plugins/real-estate::property.messages.request.name_required'),
             'content.required' => trans('plugins/real-estate::property.messages.request.content_required'),
         ];
-        $details = app(DetailInterface::class)->allBy(['re_details.status' => BaseStatusEnum::PUBLISHED]);
 
-        if (count($details)) {
-            foreach($details as $key => $detail)
+        if ($this->request->get('details')) {
+            foreach($this->request->get('details') as $key => $val)
             {
+                $detail = app(DetailInterface::class)->getFirstBy(['id' => $key]);
                 if ($detail->is_required) {
-                    $message['details.' . $detail->id . '.value.required'] = $detail->name . ' is required';
+                    $message['details.' . $key . '.value.required'] = $detail->name . ' is required';
                 }
+                
             }
         }
 

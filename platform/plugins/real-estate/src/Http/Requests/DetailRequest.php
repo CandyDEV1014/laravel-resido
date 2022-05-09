@@ -20,11 +20,12 @@ class DetailRequest extends Request
         return [
             'name'   => 'required|max:120',
             'title'  => 'required|max:120',
-            'alt'    => 'max:60',
+            'alt'    => 'required|max:60',
             'icon'   => 'max:60',
             'type'   => Rule::in(DetailTypeEnum::values()),
             'order'  => 'numeric|required|min:0',
             'status' => Rule::in(BaseStatusEnum::values()),
+            'categories'  => 'required',
         ];
     }
 

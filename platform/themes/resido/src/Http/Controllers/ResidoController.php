@@ -21,6 +21,7 @@ use Botble\RealEstate\Models\Property;
 use Botble\Blog\Models\Post;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use Botble\RealEstate\Repositories\Interfaces\CategoryInterface;
+use Botble\RealEstate\Repositories\Interfaces\DetailInterface;
 use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
 use Botble\RealEstate\Repositories\Interfaces\ReviewInterface;
 use Botble\RealEstate\Repositories\Interfaces\TypeInterface;
@@ -584,6 +585,23 @@ class ResidoController extends PublicController
         $categories = $categoryRepository->getSubcategories($request->input('id'));
         
         return $response->setData($categories)->toApiResponse();
+    }
+
+    /**
+     * @param Request           $request
+     * @param DetailInterface $detailRepository
+     * @param BaseHttpResponse  $response
+     * @return mixed
+     */
+    public function ajaxGetDetails(Request $request, DetailInterface $detailRepository, BaseHttpResponse $response)
+    {
+        if (!$request->ajax()) {
+            abort(404);
+        }
+
+        $details = $detailRepository->getDetailsByCategory($request->input('id'));
+
+        return $response->setData($details)->toApiResponse();
     }
 
     /**

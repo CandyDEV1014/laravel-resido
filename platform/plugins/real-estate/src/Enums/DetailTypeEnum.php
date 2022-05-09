@@ -9,6 +9,7 @@ use Html;
  * @method static DetailTypeEnum TEXT()
  * @method static DetailTypeEnum NUMBER()
  * @method static DetailTypeEnum DATE()
+ * @method static DetailTypeEnum YEAR()
  * @method static DetailTypeEnum SELECTBOX()
  */
 class DetailTypeEnum extends Enum
@@ -16,6 +17,7 @@ class DetailTypeEnum extends Enum
     public const TEXT = 'text';
     public const NUMBER = 'number';
     public const DATE = 'date';
+    public const YEAR = 'year';
     public const SELECTBOX = 'selectbox';
 
     /**
@@ -37,6 +39,9 @@ class DetailTypeEnum extends Enum
                     ->toHtml();
             case self::DATE:
                 return Html::tag('span', self::DATE()->label(), ['class' => 'label-success status-label'])
+                    ->toHtml();
+            case self::YEAR:
+                return Html::tag('span', self::YEAR()->label(), ['class' => 'label-success status-label'])
                     ->toHtml();
             case self::SELECTBOX:
                 return Html::tag('span', self::SELECTBOX()->label(), ['class' => 'label-success status-label'])

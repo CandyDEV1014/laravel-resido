@@ -14377,7 +14377,9 @@ footer .choose-currency {
 .choose-currency a:last-child:after {
     display: none;
 }
-
+.property-bg-custom:nth-child(odd) {
+    background: #f5faff !important;
+}
 @media only screen and (max-width: 767px) {
     .singles-dashboard-list {
         display: block;

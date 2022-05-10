@@ -31,6 +31,7 @@ return [
     'type'    => [
         'text'       => 'Text',
         'number'     => 'Number',
+        'square'     => 'Square',
         'date'       => 'Date',
         'year'       => 'Year',
         'selectbox'  => 'Selectbox',

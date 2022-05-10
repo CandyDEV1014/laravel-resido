@@ -17,7 +17,8 @@ $details = $property->details()
                 @foreach($details as $detail)
                 <li>
                     <strong>{{ $detail->title }}: </strong>
-                    {{ $detail->pivot->value }} {{ $detail->alt }}
+                    {!! clean($detail->pivot->value) !!} 
+                    {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
                 </li>
                 @endforeach
                 

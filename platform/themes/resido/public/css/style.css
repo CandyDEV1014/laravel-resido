@@ -14003,6 +14003,10 @@ footer .choose-currency {
   display: none;
 }
 
+.property-bg-custom:nth-child(odd) {
+  background: #f5faff !important;
+}
+
 @media only screen and (max-width: 767px) {
   .singles-dashboard-list {
     display: block;

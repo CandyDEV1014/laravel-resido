@@ -16,7 +16,7 @@
             <div class="click @if(!$img_slider) not-slider @endif">
                 @foreach ($property['images'] as $image)
                     <div>
-                        <a href="{{ $property->url }}">
+                        <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}">
                             @if($is_lazyload)
                             <img src="{{ get_image_loading() }}"
                                 data-src="{{ RvMedia::getImageUrl($image, 'medium', false, RvMedia::getDefaultImage()) }}"
@@ -60,7 +60,7 @@
         <div class="listing-detail-wrapper-box">
             <div class="listing-detail-wrapper">
                 <div class="listing-short-detail">
-                    <h4 class="listing-name"><a href="{{ $property->url }}" title="{{ $property->name }}">{!! clean($property->name) !!}</a></h4>
+                    <h4 class="listing-name"><a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" title="{{ $property->name }}">{!! clean($property->name) !!}</a></h4>
                     
                 </div>
                 <div class="list-price">
@@ -89,7 +89,8 @@
                     <div class="inc-fleat-icon">
                         <i class="{{ $detail->icon }}"></i>
                     </div>
-                    {!! clean($detail->pivot->value) !!} {{ !! clean($detail->alt) }}
+                    {!! clean($detail->pivot->value) !!} 
+                    {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
                 </div>
                 @endforeach
             </div>
@@ -100,7 +101,7 @@
                 <span class="listing-location"><i class="ti-location-pin"></i>{!! clean($property->city_name) !!}</span>
             </div>
             <div class="listing-detail-btn">
-                <a href="{{ $property->url }}" class="more-btn">{{ __('View') }}</a>
+                <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" class="more-btn">{{ __('View') }}</a>
             </div>
         </div>
 

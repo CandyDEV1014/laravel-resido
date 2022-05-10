@@ -23,14 +23,16 @@ $details = $property->details()
                                     <span class="property-featured theme-bg">{{ __('Featured') }}</span>
                                 </div>
                                 <div class="home-slider-title">
-                                    <h3><a href="{{ $property->url }}">{!! clean($property->name) !!}</a></h3>
+                                    <h3><a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}">{!! clean($property->name) !!}</a></h3>
                                     <span><i class="lni-map-marker"></i> {!! clean($property->location) !!}</span>
                                 </div>
 
                                 <div class="slide-property-info">
                                     <ul>
                                         @foreach($details as $detail)
-                                        <li>{{ !! clean($detail->alt) }}: {!! clean($detail->pivot->value) !!}</li>
+                                        <li>
+                                            {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}: 
+                                            {!! clean($detail->pivot->value) !!}</li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -38,13 +40,13 @@ $details = $property->details()
                                 <div class="listing-price-with-compare">
                                     <h4 class="list-pr theme-cl"> {{ $property->price_html }} </h4>
                                     <div class="lpc-right">
-                                        <a href="{{ $property->url }}" data-bs-toggle="tooltip" data-placement="top"
+                                        <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" data-bs-toggle="tooltip" data-placement="top"
                                            title="{{ $property->name }}">
                                         </a>
                                     </div>
                                 </div>
 
-                                <a href="{{ $property->url }}" class="read-more">{{ __('View Details') }}
+                                <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" class="read-more">{{ __('View Details') }}
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>

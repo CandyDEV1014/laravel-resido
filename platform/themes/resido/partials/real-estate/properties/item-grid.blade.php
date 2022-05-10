@@ -16,7 +16,7 @@
             <div class="click @if(!$img_slider) not-slider @endif">
                 @foreach ($property['images'] as $image)
                     <div>
-                        <a href="{{ $property->url }}">
+                        <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}">
                             @if($is_lazyload)
                             <img src="{{ get_image_loading() }}"
                                 data-src="{{ RvMedia::getImageUrl($image, 'medium', false, RvMedia::getDefaultImage()) }}"
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <h4 class="listing-name">
-                    <a href="{{ $property->url }}" class="prt-link-detail"
+                    <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" class="prt-link-detail"
                        title="{{ $property->name }}">{!! clean($property->name) !!}</a>
                 </h4>
                 @if (is_review_enabled() && $property->reviews_count > 0)
@@ -89,7 +89,8 @@
                 <div class="inc-fleat-icon">
                     <i class="{{ $detail->icon }}"></i>
                 </div>
-                {!! clean($detail->pivot->value) !!} {{ !! clean($detail->alt) }}
+                {!! clean($detail->pivot->value) !!} 
+                {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
             </div>
             @endforeach
         </div>
@@ -104,7 +105,7 @@
             </div>
         </div>
         <div class="footer-flex">
-            <a href="{{ $property->url }}" class="prt-view">{{ __('View') }}</a>
+            <a href="{{ $property->status == 'sold' ? 'javascript:void(0);' : $property->url }}" class="prt-view">{{ __('View') }}</a>
         </div>
     </div>
 </div>

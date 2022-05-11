@@ -42,8 +42,9 @@ class HookServiceProvider extends ServiceProvider
                 });
             }
 
-            add_filter(BASE_FILTER_AFTER_SETTING_CONTENT, [$this, 'addSettings'], 301);
         });
+
+        add_filter(BASE_FILTER_AFTER_SETTING_CONTENT, [$this, 'addSettings'], 301);
     }
 
     /**

@@ -159,7 +159,7 @@ class PropertyForm extends FormAbstract
         }
         
         // get all categories
-        $categories = $this->categoryRepository->all();
+        $categories = $this->categoryRepository->allBy(['parent_id' => 0]);
         $categoryChoices = [];
         foreach ($categories as $category) {
             $categoryChoices[$category->id] = $category->name ? $category->name : '';

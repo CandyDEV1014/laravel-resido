@@ -223,6 +223,16 @@ $(document).ready(function () {
                                         /> \
                                 ';
                                 break;
+                            case 'square':
+                                html += '\
+                                        <input type="number" \
+                                            name="details[' + item.id +'][value]" \
+                                            class="form-control" \
+                                            placeholder="' + item.name + '" \
+                                            value="' + (selected_details[item.id] ? selected_details[item.id] : '') + '" \
+                                        /> \
+                                ';
+                                break;
                             case 'date':
                                 html += '\
                                         <input type="text" \

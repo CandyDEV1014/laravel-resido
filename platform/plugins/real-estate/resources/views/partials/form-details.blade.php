@@ -20,6 +20,15 @@
                     value="{{ isset($selectedDetails[$detail->id]) ? $selectedDetails[$detail->id] : '' }}" 
                 />
                 @break
+
+            @case('square')
+                <input type="number" 
+                    name="details[{{ $detail->id }}][value]"
+                    class="form-control" 
+                    placeholder="{{ $detail->name }}" 
+                    value="{{ isset($selectedDetails[$detail->id]) ? $selectedDetails[$detail->id] : '' }}" 
+                />
+                @break
             
             @case('date')
                 <input 

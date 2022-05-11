@@ -704,34 +704,34 @@ $(function () {
     }
 
     if ($("#agent").length) {
-    // Select Max Price
+    // Select Agent
         $('#agent').select2({
             allowClear: true
         });
     }
     
-    if ($("#city_id").length) {
-        // Select Town
+    // if ($("#city_id").length) {
+    //     // Select Town
 
-        $('#city_id').select2({
-            allowClear: true,
-            ajax: {
-                url: $('#city_id').data('url'),
-                dataType: 'json',
-                processResults: function (data) {
-                    return {
-                        results: data.data.map(i => {
-                            return {
-                                "id": i.id,
-                                "text": i.name + (i.state_name != null && i.state_name != '' ? (', ' + i.state_name) : '')
-                            }
-                        })
-                    };
-                }
-            },
+    //     $('#city_id').select2({
+    //         allowClear: true,
+    //         ajax: {
+    //             url: $('#city_id').data('url'),
+    //             dataType: 'json',
+    //             processResults: function (data) {
+    //                 return {
+    //                     results: data.data.map(i => {
+    //                         return {
+    //                             "id": i.id,
+    //                             "text": i.name + (i.state_name != null && i.state_name != '' ? (', ' + i.state_name) : '')
+    //                         }
+    //                     })
+    //                 };
+    //             }
+    //         },
 
-        });
-    }
+    //     });
+    // }
 
     // Select Rooms
     if ($("#rooms").length) {
@@ -1025,7 +1025,7 @@ $(function () {
                         option += '<option value="' + item.id + '">' + item.name + '</option>';
                     });
 
-                    $('#sub_category').html(option).select2();
+                    $('#sub_category').html(option).select2({allowClear: true});
                 }
             });
         })
@@ -1047,7 +1047,7 @@ $(function () {
                         option += '<option value="' + item.id + '">' + item.name + '</option>';
                     });
 
-                    $('#filter_state_id').html(option).select2();
+                    $('#filter_state_id').html(option).select2({allowClear: true});
                 }
             });
         })
@@ -1068,7 +1068,7 @@ $(function () {
                         option += '<option value="' + item.id + '">' + item.name + '</option>';
                     });
 
-                    $('#filter_city_id').html(option).select2();
+                    $('#filter_city_id').html(option).select2({allowClear: true});
                 }
             });
         });

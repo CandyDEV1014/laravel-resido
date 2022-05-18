@@ -2,12 +2,10 @@
 @php
 $user = auth('account')->user();
 
-$getMyReview = \Botble\RealEstate\Models\Review::select('re_reviews.*','re_properties.expire_date as expireDate','re_properties.never_expired as neverExpired')
-->join('re_properties', 're_properties.id', '=', 're_reviews.reviewable_id')
+$getMyReview = \Botble\RealEstate\Models\Review::select('re_reviews.*')
 ->where('account_id', $user->id)
 ->orderBy('id', 'DESC')
 ->paginate(10);
-
 @endphp
 {{-- ->where('expire_date', '>', now()->toDateTimeString())
 ->where('never_expired', false) --}}
@@ -37,8 +35,17 @@ $getMyReview = \Botble\RealEstate\Models\Review::select('re_reviews.*','re_prope
                                                     <article>
                                                         <div class="article_comments_thumb">
                                                             <a href="{{$value->reviewable->url}}">
-                                                                <img src="@if(isset($value->reviewable->images)) {{RvMedia::getImageUrl($value->reviewable->images ? $value->reviewable->images[1] : 'img-loading.jpg', null, false, RvMedia::getDefaultImage())}} @endif" style="height: 80px;">
-                                                                {{-- <img src="{{ $value->account->avatar->url ? RvMedia::getImageUrl($value->account->avatar->url, 'thumb') : $value->account->avatar_url }}" /> --}}
+                                                                @php
+                                                                $src = '';
+                                                                if (isset($value->reviewable->images)) {
+                                                                    $src = count($value->reviewable->images) > 0 ? RvMedia::getImageUrl(array_values($value->reviewable->images)[0], 'thumb') : RvMedia::getImageUrl('img-loading.jpg', 'thumb');
+                                                                } else if (isset($value->reviewable->image)) {
+                                                                    $src = $value->reviewable->image != '' ? RvMedia::getImageUrl($value->reviewable->image, 'thumb') : RvMedia::getImageUrl('img-loading.jpg', 'thumb');
+                                                                } else {
+                                                                    $src = RvMedia::getImageUrl('img-loading.jpg', 'thumb');
+                                                                }
+                                                                @endphp
+                                                                <img src="{{ $src }}" style="height: 80px;" />
                                                             </a>
                                                         </div>
                                                         <div style="display: flex; align-items: center; justify-content: space-between;">
@@ -66,8 +73,8 @@ $getMyReview = \Botble\RealEstate\Models\Review::select('re_reviews.*','re_prope
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <a href="{{url('account/my-review/edit/'.$value->id)}}"><i class="fa fa-edit" style="color: #898b8d;"></i></a>&nbsp;&nbsp;
-                                                                <a href="{{url('account/my-review/delete/'.$value->id)}}" onclick="return confirm('Are you sure you want to delete this review?');"><i class="fa fa-trash" style="color: #898b8d;"></i></a>
+                                                                <a href="{{ route('public.account.editMyReview', $value->id) }}"><i class="fa fa-edit" style="color: #898b8d;"></i></a>&nbsp;&nbsp;
+                                                                <a href="{{ route('public.account.deleteMyReview', $value->id) }}" onclick="return confirm('Are you sure you want to delete this review?');"><i class="fa fa-trash" style="color: #898b8d;"></i></a>
                                                             </div>
                                                         </div>
                                                     </article>
@@ -95,7 +102,7 @@ $getMyReview = \Botble\RealEstate\Models\Review::select('re_reviews.*','re_prope
 
     <div class="row">
         <div id="app-real-estate">
-            <activity-log-component default-active-tab="activity-logs"></activity-log-component>
+            <activity-log-component url="{{ route('public.account.ajax.myreview-activity-logs') }}" default-active-tab="activity-logs"></activity-log-component>
         </div>
     </div>
 @endsection

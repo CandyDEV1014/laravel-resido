@@ -46,7 +46,7 @@
                         </div>
                     @endif
 
-                    <payment-history-component></payment-history-component>
+                    <payment-history-component url="{{ route('public.account.ajax.transactions') }}"></payment-history-component>
                 </div>
             </div>
         </div>

@@ -37169,11 +37169,32 @@ var render = function () {
       ? _c("p", [_vm._v(_vm._s(this.expiredText))])
       : _c("p", [
           _vm._v("\n        " + _vm._s(this.text) + "\n        "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.days) + " Days ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.days) +
+                " " +
+                _vm._s(_vm.__("promo_Days")) +
+                " "
+            ),
+          ]),
           _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.hours) + " Hours ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.hours) +
+                " " +
+                _vm._s(_vm.__("promo_Hours")) +
+                " "
+            ),
+          ]),
           _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.seconds) + " Seconds ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.seconds) +
+                " " +
+                _vm._s(_vm.__("promo_Seconds")) +
+                " "
+            ),
+          ]),
         ]),
   ])
 }

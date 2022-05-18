@@ -75,21 +75,35 @@ class Transaction extends Eloquent
 
         if ($this->user_id) {
             if ($this->type == TransactionTypeEnum::ADD) {
-                return __(
-                    'Added :credits credit(s) by admin ":user"',
+                return trans(
+                    'plugins/real-estate::transaction.actions.added_by_admin', 
                     ['credits' => $this->credits, 'user' => $this->user->name]
                 );
+                
             }
 
-            return __(
-                'Removed :credits credit(s) by admin ":user"',
+            return trans(
+                'plugins/real-estate::transaction.actions.removed_by_admin', 
                 ['credits' => $this->credits, 'user' => $this->user->name]
             );
         }
-        $description = __('You have purchased :package_name plan and earned :credits credit(s)', ['package_name' => $this->package->name, 'credits' => $this->credits]);
+        
+        $description = trans(
+            'plugins/real-estate::transaction.actions.purchase_package', 
+            ['package_name' => $this->package->name, 'credits' => $this->credits]
+        );
+
         if ($this->payment_id) {
-            $description .= ' ' . __('via') . ' ' . $this->payment->payment_channel->label() . ' ' . $time .
-                ': ' . number_format($this->payment->amount, 2) . $this->payment->currency;
+            $description = trans(
+                'plugins/real-estate::transaction.actions.purchase_package_via_payment', 
+                [
+                    'package_name' => $this->package->name, 
+                    'credits' => $this->credits,
+                    'payment_channel' => $this->payment->payment_channel->label(),
+                    'time' => $time,
+                    'amount' => number_format($this->payment->amount, 2) . $this->payment->currency
+                ]
+            );
         }
 
         return $description;

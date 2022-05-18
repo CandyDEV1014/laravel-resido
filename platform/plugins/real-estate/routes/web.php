@@ -275,15 +275,17 @@ Route::group(['namespace' => 'Botble\RealEstate\Http\Controllers', 'middleware' 
                 });
 
                 Route::group(['prefix' => 'account/ajax'], function () {
-                    Route::get('activity-logs', [
-                        'as'   => 'activity-logs',
-                        'uses' => 'PublicAccountController@getActivityLogs',
-                    ]);
+                    Route::get('activity-logs', 'PublicAccountController@getActivityLogs')
+                        ->name('ajax.activity-logs');
 
-                    Route::get('transactions', [
-                        'as'   => 'ajax.transactions',
-                        'uses' => 'PublicAccountController@ajaxGetTransactions',
-                    ]);
+                    Route::get('myreview-activity-logs', 'PublicAccountController@getMyReviewActivityLogs')
+                    ->name('ajax.myreview-activity-logs');
+
+                    Route::get('clientreview-activity-logs', 'PublicAccountController@getClientReviewActivityLogs')
+                    ->name('ajax.clientreview-activity-logs');
+
+                    Route::get('transactions', 'PublicAccountController@ajaxGetTransactions')
+                        ->name('ajax.transactions');
 
                     Route::post('upload', [
                         'as'   => 'upload',

@@ -18066,29 +18066,29 @@ $(function () {
     $('.featured_slick_gallery-slide').slick({
       centerMode: false,
       infinite: true,
+      dots: true,
+      autoplay: true,
+      fade: true,
       rtl: isRTL,
       centerPadding: '80px',
-      slidesToShow: 1 // responsive: [
-      //     {
-      //         breakpoint: 768,
-      //         settings: {
-      //             arrows: true,
-      //             centerMode: true,
-      //             centerPadding: '60px',
-      //             slidesToShow: 3
-      //         }
-      //     },
-      //     {
-      //         breakpoint: 480,
-      //         settings: {
-      //             arrows: false,
-      //             centerMode: true,
-      //             centerPadding: '20px',
-      //             slidesToShow: 1
-      //         }
-      //     }
-      // ]
-
+      slidesToShow: 1,
+      responsive: [{
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+          centerMode: true,
+          centerPadding: '60px',
+          slidesToShow: 3
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '20px',
+          slidesToShow: 1
+        }
+      }]
     }).magnificPopup({
       type: 'image',
       delegate: 'a.mfp-gallery',

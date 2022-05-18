@@ -55,6 +55,14 @@
         mounted() {
             this.getData();
         },
+        
+        props: {
+            url: {
+                type: String,
+                default: () => null,
+                required: true
+            },
+        },
 
         methods: {
             getData(url = null) {
@@ -63,7 +71,7 @@
                 } else {
                     this.isLoading = true;
                 }
-                axios.get(url ? url : '/account/ajax/transactions')
+                axios.get(url ? url : this.url)
                     .then(res => {
                         let oldData = [];
                         if (this.data.data) {

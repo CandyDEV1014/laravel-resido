@@ -55,10 +55,11 @@ class AccountForm extends FormAbstract
         Assets::addStylesDirectly('vendor/core/plugins/real-estate/css/account-admin.css')
             ->addScriptsDirectly(['/vendor/core/plugins/real-estate/js/account-admin.js']);
         
-        $activePackage = $this->accountPackageRepository->getActivePackage($this->getModel()->id);
-
-        $this->getModel()->package_id = !empty($activePackage) ? $activePackage['package_id'] : 0;
-
+        if ($this->getModel()) {
+            $activePackage = $this->accountPackageRepository->getActivePackage($this->getModel()->id);
+            $this->getModel()->package_id = !empty($activePackage) ? $activePackage['package_id'] : 0;
+        }
+        
         $packages = $this->packageRepository->advancedGet([
             'order_by' => ['order' => 'DESC'],
             'condition' => ['status' => BaseStatusEnum::PUBLISHED],

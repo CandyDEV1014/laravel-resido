@@ -543,6 +543,32 @@ class PublicAccountController extends Controller
     }
 
     /**
+     * @param BaseHttpResponse $response
+     * @return BaseHttpResponse
+     */
+    public function getMyReviewActivityLogs(BaseHttpResponse $response)
+    {
+        $activities = $this->activityLogRepository->getMyReviewAllLogs(auth('account')->id());
+
+        Assets::addScriptsDirectly('vendor/core/plugins/real-estate/js/components.js');
+
+        return $response->setData(ActivityLogResource::collection($activities))->toApiResponse();
+    }
+
+    /**
+     * @param BaseHttpResponse $response
+     * @return BaseHttpResponse
+     */
+    public function getClientReviewActivityLogs(BaseHttpResponse $response)
+    {
+        $activities = $this->activityLogRepository->getClientReviewAllLogs(auth('account')->id());
+        
+        Assets::addScriptsDirectly('vendor/core/plugins/real-estate/js/components.js');
+
+        return $response->setData(ActivityLogResource::collection($activities))->toApiResponse();
+    }
+
+    /**
      * @param Request $request
      * @param BaseHttpResponse $response
      * @return BaseHttpResponse|JsonResponse

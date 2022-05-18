@@ -13,4 +13,18 @@ interface AccountActivityLogInterface extends RepositoryInterface
      * @return Collection
      */
     public function getAllLogs($accountId, $paginate = 10);
+
+    /**
+     * @param $accountId
+     * @param int $paginate
+     * @return Collection
+     */
+    public function getMyReviewAllLogs($accountId, $paginate = 10);
+
+    /**
+     * @param $accountId
+     * @param int $paginate
+     * @return Collection
+     */
+    public function getClientReviewAllLogs($accountId, $paginate = 10);
 }

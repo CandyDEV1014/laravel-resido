@@ -5,6 +5,9 @@ namespace Botble\RealEstate\Http\Controllers\Fronts;
 use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\RealEstate\Repositories\Interfaces\ReviewInterface;
+use Botble\RealEstate\Repositories\Interfaces\AccountActivityLogInterface;
+use Botble\RealEstate\Repositories\Interfaces\PropertyInterface;
+use Botble\Blog\Repositories\Interfaces\PostInterface;
 use Botble\RealEstate\Http\Requests\ReviewRequest;
 use Botble\RealEstate\Http\Requests\PostReviewRequest;
 use Botble\RealEstate\Models\ReviewMeta;
@@ -16,17 +19,23 @@ class PublicReviewController
      * @var ReviewInterface
      */
     protected $reviewRepository;
-
    
+    /**
+     * @var AccountActivityLogInterface
+     */
+    protected $activityLogRepository;
 
     /**
      * PublicReviewController constructor.
      * @param ReviewInterface $reviewRepository
+     * @param AccountActivityLogInterface $accountActivityLogRepository
      */
     public function __construct(
-        ReviewInterface $reviewRepository
+        ReviewInterface $reviewRepository,
+        AccountActivityLogInterface $accountActivityLogRepository
     ) {
         $this->reviewRepository = $reviewRepository;
+        $this->activityLogRepository = $accountActivityLogRepository;
     }
 
 
@@ -64,6 +73,21 @@ class PublicReviewController
             $getMyReview->star      = $request->input('star');
             $getMyReview->comment   = $request->input('comment');
             $getMyReview->save();
+
+            // $this->activityLogRepository->createOrUpdate(['action' => 'update_review']);
+            $property = app(PropertyInterface::class)->findOrFail($request->input('reviewable_id'));
+            
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'update_my_review',
+                'reference_name' => $property->name,
+                'reference_url'  => $property->url,
+            ]);
+
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'update_client_review',
+                'reference_name' => $property->name,
+                'reference_url'  => $property->url,
+            ]);
             
         }else{
             $request->merge(['account_id' => auth('account')->id()]);
@@ -73,6 +97,22 @@ class PublicReviewController
             foreach ($request->input('meta') as $key => $value) {
                 ReviewMeta::setMeta($key, $value, $review->id);
             }
+
+            $property = app(PropertyInterface::class)->findOrFail($request->input('reviewable_id'));
+            
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'add_my_review',
+                'reference_name' => $property->name,
+                'reference_url'  => $property->url,
+            ]);
+
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'add_client_review',
+                'reference_name' => $property->name,
+                'reference_url'  => $property->url,
+            ]);
+            
+            // $this->activityLogRepository->createOrUpdate(['action' => 'add_review']);
         }
 
         if ($request->input('edit') == 'yes') {
@@ -138,6 +178,20 @@ class PublicReviewController
             $getMyReview->star      = 0;
             $getMyReview->comment   = $request->input('comment');
             $getMyReview->save();
+
+            $post = app(PostInterface::class)->findOrFail($request->input('reviewable_id'));
+            
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'update_my_review',
+                'reference_name' => $post->name,
+                'reference_url'  => $post->url,
+            ]);
+
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'update_client_review',
+                'reference_name' => $post->name,
+                'reference_url'  => $post->url,
+            ]);
             
         }else{
             $request->merge(['account_id' => auth('account')->id()]);
@@ -147,6 +201,19 @@ class PublicReviewController
             // foreach ($request->input('meta') as $key => $value) {
             //     ReviewMeta::setMeta($key, $value, $review->id);
             // }
+            
+            $post = app(PostInterface::class)->findOrFail($request->input('reviewable_id'));
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'add_my_review',
+                'reference_name' => $post->name,
+                'reference_url'  => $post->url,
+            ]);
+
+            $this->activityLogRepository->createOrUpdate([
+                'action'         => 'add_client_review',
+                'reference_name' => $post->name,
+                'reference_url'  => $post->url,
+            ]);
         }
 
         if ($request->input('edit') == 'yes') {

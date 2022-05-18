@@ -75,7 +75,18 @@
             this.prepareComponent();
         },
 
-        props: ['defaultActiveTab'],
+        props: {
+            url: {
+                type: String,
+                default: () => null,
+                required: true
+            },
+            defaultActiveTab: {
+                type: String,
+                default: () => null,
+                required: true
+            },
+        },
 
         methods: {
             prepareComponent() {
@@ -107,13 +118,14 @@
                 } else {
                     this.isLoading = true;
                 }
-                axios.get(url ? url : '/account/ajax/activity-logs')
+                axios.get(url ? url : this.url)
                     .then(res => {
                         let oldData = [];
                         if (this.activityLogs.data) {
                             oldData = this.activityLogs.data;
                         }
                         this.activityLogs = res.data;
+                        console.log(this.activityLogs);
                         this.activityLogs.data = oldData.concat(this.activityLogs.data);
                         this.isLoading = false;
                         this.isLoadingMore = false;

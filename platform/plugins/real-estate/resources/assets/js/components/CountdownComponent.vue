@@ -3,10 +3,10 @@
         <p v-if="expired">{{ this.expiredText }}</p>
         <p v-else>
             {{ this.text }}
-            <span>{{ remaining.days }} Days </span>
-            <span>{{ remaining.hours }} Hours </span>
+            <span>{{ remaining.days }} {{ __('promo_Days')}} </span>
+            <span>{{ remaining.hours }} {{ __('promo_Hours')}} </span>
             <!-- <span>{{ remaining.minutes }} Minutes </span> -->
-            <span>{{ remaining.seconds }} Seconds </span>
+            <span>{{ remaining.seconds }} {{ __('promo_Seconds')}} </span>
         </p>
     </div>
 </template>

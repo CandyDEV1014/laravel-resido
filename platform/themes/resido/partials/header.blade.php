@@ -43,6 +43,10 @@
       "value": "{{ trans('plugins/real-estate::review.value') }}",
       "location": "{{ trans('plugins/real-estate::review.location') }}",
       "cleanliness": "{{ trans('plugins/real-estate::review.cleanliness') }}",
+      "promo_Days": "{{ trans('package.promo_Days')}}",
+      "promo_Hours": "{{ trans('package.promo_Hours')}}",
+      "promo_Minutes": "{{ trans('package.promo_Minutes')}}",
+      "promo_Seconds": "{{ trans('package.promo_Seconds')}}"
     }
     window.themeUrl = '{{ Theme::asset()->url('') }}';
     window.siteUrl = '{{ url('') }}';

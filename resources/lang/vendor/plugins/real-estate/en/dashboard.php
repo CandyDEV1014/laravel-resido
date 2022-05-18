@@ -79,6 +79,10 @@ return [
         'update_security' => 'You have updated your security settings',
         'your_property_updated_by_admin' => 'Your property ":name" is updated by administrator',
         'changed_avatar' => 'You have changed your avatar',
+        'add_my_review' => 'You have added new review for :name before',
+        'update_my_review' => 'You have updated review for :name before',
+        'add_client_review' => 'User :account_name has added new review for your :name',
+        'update_client_review' => 'User :account_name has updated review for your :name'
     ],
     'load_more' => 'Load more',
     'loading_more' => 'Loading...',

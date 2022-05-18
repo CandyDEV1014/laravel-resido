@@ -14,4 +14,20 @@ class AccountActivityLogCacheDecorator extends CacheAbstractDecorator implements
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMyReviewAllLogs($accountId, $paginate = 10)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getClientReviewAllLogs($accountId, $paginate = 10)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
 }

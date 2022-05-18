@@ -135,7 +135,7 @@
 
     <div class="row">
         <div id="app-real-estate">
-            <activity-log-component default-active-tab="activity-logs"></activity-log-component>
+            <activity-log-component url="{{ route('public.account.ajax.myreview-activity-logs') }}" default-active-tab="activity-logs"></activity-log-component>
         </div>
     </div>
 @endsection

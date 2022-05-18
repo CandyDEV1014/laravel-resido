@@ -24,7 +24,7 @@
                 @endif
 
               <div id="app-real-estate">
-                <payment-history-component></payment-history-component>
+                <payment-history-component url="{{ route('public.account.ajax.transactions') }}"></payment-history-component>
               </div>
 
               </div>

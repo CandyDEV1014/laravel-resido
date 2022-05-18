@@ -562,4 +562,6 @@ class PublicController extends Controller
         return RssFeed::renderFeedItems($feedItems, 'Properties feed',
             'Latest properties from ' . theme_option('site_title'));
     }
+
+    
 }

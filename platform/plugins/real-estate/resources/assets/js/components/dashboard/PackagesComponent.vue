@@ -17,29 +17,30 @@
                         <span class="pricing-title">{{ item.name }}</span>
                         <h4 class="pricing-value" :class="{'line-through': item.is_promotion && Date.now() < new Date(item.promotion_time)}">{{ item.price_text }}</h4>
                         <h4 class="pricing-promotion-value" v-if="item.is_promotion && Date.now() < new Date(item.promotion_time)">{{ item.promotion_price_text }}</h4>
-                        <CountdownComponent v-if="item.is_promotion && Date.now() < new Date(item.promotion_time)" :until="item.promotion_time" text="Promotion will end"></CountdownComponent>
-                        <p class="pricing-duration">Period: <span>{{ item.number_of_days == -1 ? "Unlimited" : item.number_of_days }} days</span></p>
+                        <CountdownComponent v-if="item.is_promotion && Date.now() < new Date(item.promotion_time)" :until="item.promotion_time" :text="__('promotion_text')"></CountdownComponent>
+
+                        <p class="pricing-duration">{{ __('period') }} <span>{{ item.number_of_days == -1 ? __("unlimited") : item.number_of_days }} {{ __('days') }}</span></p>
                         <ul>
-                            <li>Credits: {{ item.credits }}</li>
-                            <li class="">{{ item.number_of_properties == -1 ? 'Unlimited' : item.number_of_properties }} Property Submission</li>
-                            <li class="">{{ item.number_of_aminities == -1 ? 'Unlimited' : item.number_of_aminities }} Aminity</li>
-                            <li class="">{{ item.number_of_nearestplace == -1 ? 'Unlimited' : item.number_of_nearestplace }} Nearest Place</li>
-                            <li class="">{{ item.number_of_photo == -1 ? 'Unlimited' : item.number_of_photo }} Photo</li>
-                            <li :class="{'add_before': !item.is_allow_featured}">Featured Property</li>
-                            <li :class="{'add_before': !item.is_allow_featured}">{{ !item.is_allow_featured ? 0 : item.is_allow_featured && item.number_of_featured == -1 ? 'Unlimited' : item.number_of_featured }} Featured Property</li>
-                            <li :class="{'add_before': !item.is_allow_top}">Top Property</li>
-                            <li :class="{'add_before': !item.is_allow_top}">{{ !item.is_allow_top ? 0 : item.is_allow_top && item.number_of_top == -1 ? 'Unlimited' : item.number_of_top }} Top Property</li>
-                            <li :class="{'add_before': !item.is_allow_urgent}">Urgent Property</li>
-                            <li :class="{'add_before': !item.is_allow_urgent}">{{ !item.is_allow_urgent ? 0 : item.is_allow_urgent && item.number_of_urgent == -1 ? 'Unlimited' : item.number_of_urgent }} Urgent Property</li>
-                            <li :class="{'add_before': !item.is_auto_renew}">Auto Renew</li>
-                            <li :class="{'add_before': !item.is_agent}">Agent</li>
+                            <li>{{ __('credits') }} {{ item.credits }}</li>
+                            <li class="">{{ item.number_of_properties == -1 ? __("unlimited") : item.number_of_properties }} {{ __('property_submission') }}</li>
+                            <li class="">{{ item.number_of_aminities == -1 ? __("unlimited") : item.number_of_aminities }} {{ __('aminity') }}</li>
+                            <li class="">{{ item.number_of_nearestplace == -1 ? __("unlimited") : item.number_of_nearestplace }} {{ __('nearest_place') }}</li>
+                            <li class="">{{ item.number_of_photo == -1 ? __("unlimited") : item.number_of_photo }} {{ __('photo') }}</li>
+                            <li :class="{'add_before': !item.is_allow_featured}">{{ __('featured_property') }}</li>
+                            <li :class="{'add_before': !item.is_allow_featured}">{{ !item.is_allow_featured ? 0 : item.is_allow_featured && item.number_of_featured == -1 ? __("unlimited") : item.number_of_featured }} {{ __('featured_property') }}</li>
+                            <li :class="{'add_before': !item.is_allow_top}">{{ __('top_property') }}</li>
+                            <li :class="{'add_before': !item.is_allow_top}">{{ !item.is_allow_top ? 0 : item.is_allow_top && item.number_of_top == -1 ? __("unlimited") : item.number_of_top }} {{ __('top_property') }}</li>
+                            <li :class="{'add_before': !item.is_allow_urgent}">{{ __('urgent_property') }}</li>
+                            <li :class="{'add_before': !item.is_allow_urgent}">{{ !item.is_allow_urgent ? 0 : item.is_allow_urgent && item.number_of_urgent == -1 ? __("unlimited") : item.number_of_urgent }} {{ __('urgent_property') }}</li>
+                            <li :class="{'add_before': !item.is_auto_renew}">{{ __('auto_renew') }}</li>
+                            <li :class="{'add_before': !item.is_agent}">{{ __('agent') }}</li>
                             <template v-for="(feature, index) in JSON.parse(item.features)">
                                 <template v-if="feature[0].value">
                                     <li :key="index">{{ feature[0].value}}</li>
                                 </template>
                             </template>
                         </ul>   
-                        <a class="pricing-btn" @click="postSubscribe(item.id)" :disabled="isSubscribing">Activate</a>
+                        <a class="pricing-btn" @click="postSubscribe(item.id)" :disabled="isSubscribing">{{ __('activate') }}</a>
                     </div>
                 </div>
             </div>

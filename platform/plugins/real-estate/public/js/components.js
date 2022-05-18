@@ -2485,7 +2485,22 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.prepareComponent();
   },
-  props: ['defaultActiveTab'],
+  props: {
+    url: {
+      type: String,
+      "default": function _default() {
+        return null;
+      },
+      required: true
+    },
+    defaultActiveTab: {
+      type: String,
+      "default": function _default() {
+        return null;
+      },
+      required: true
+    }
+  },
   methods: {
     prepareComponent: function prepareComponent() {
       this.setActiveTab(this.defaultActiveTab);
@@ -2516,7 +2531,7 @@ __webpack_require__.r(__webpack_exports__);
         this.isLoading = true;
       }
 
-      axios.get(url ? url : '/account/ajax/activity-logs').then(function (res) {
+      axios.get(url ? url : this.url).then(function (res) {
         var oldData = [];
 
         if (_this.activityLogs.data) {
@@ -2524,6 +2539,7 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this.activityLogs = res.data;
+        console.log(_this.activityLogs);
         _this.activityLogs.data = oldData.concat(_this.activityLogs.data);
         _this.isLoading = false;
         _this.isLoadingMore = false;
@@ -2547,6 +2563,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var epic_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! epic-spinners */ "./node_modules/epic-spinners/src/lib.js");
 /* harmony import */ var _CountdownComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../CountdownComponent.vue */ "./platform/plugins/real-estate/resources/assets/js/components/CountdownComponent.vue");
+//
 //
 //
 //
@@ -2743,6 +2760,15 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getData();
   },
+  props: {
+    url: {
+      type: String,
+      "default": function _default() {
+        return null;
+      },
+      required: true
+    }
+  },
   methods: {
     getData: function getData() {
       var _this = this;
@@ -2755,7 +2781,7 @@ __webpack_require__.r(__webpack_exports__);
         this.isLoading = true;
       }
 
-      axios.get(url ? url : '/account/ajax/transactions').then(function (res) {
+      axios.get(url ? url : this.url).then(function (res) {
         var oldData = [];
 
         if (_this.data.data) {
@@ -42716,11 +42742,32 @@ var render = function () {
       ? _c("p", [_vm._v(_vm._s(this.expiredText))])
       : _c("p", [
           _vm._v("\n        " + _vm._s(this.text) + "\n        "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.days) + " Days ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.days) +
+                " " +
+                _vm._s(_vm.__("promo_Days")) +
+                " "
+            ),
+          ]),
           _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.hours) + " Hours ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.hours) +
+                " " +
+                _vm._s(_vm.__("promo_Hours")) +
+                " "
+            ),
+          ]),
           _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.remaining.seconds) + " Seconds ")]),
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.remaining.seconds) +
+                " " +
+                _vm._s(_vm.__("promo_Seconds")) +
+                " "
+            ),
+          ]),
         ]),
   ])
 }
@@ -43194,20 +43241,22 @@ var render = function () {
                           ? _c("CountdownComponent", {
                               attrs: {
                                 until: item.promotion_time,
-                                text: "Promotion will end",
+                                text: _vm.__("promotion_text"),
                               },
                             })
                           : _vm._e(),
                         _vm._v(" "),
                         _c("p", { staticClass: "pricing-duration" }, [
-                          _vm._v("Period: "),
+                          _vm._v(_vm._s(_vm.__("period")) + " "),
                           _c("span", [
                             _vm._v(
                               _vm._s(
                                 item.number_of_days == -1
-                                  ? "Unlimited"
+                                  ? _vm.__("unlimited")
                                   : item.number_of_days
-                              ) + " days"
+                              ) +
+                                " " +
+                                _vm._s(_vm.__("days"))
                             ),
                           ]),
                         ]),
@@ -43216,16 +43265,22 @@ var render = function () {
                           "ul",
                           [
                             _c("li", [
-                              _vm._v("Credits: " + _vm._s(item.credits)),
+                              _vm._v(
+                                _vm._s(_vm.__("credits")) +
+                                  " " +
+                                  _vm._s(item.credits)
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("li", {}, [
                               _vm._v(
                                 _vm._s(
                                   item.number_of_properties == -1
-                                    ? "Unlimited"
+                                    ? _vm.__("unlimited")
                                     : item.number_of_properties
-                                ) + " Property Submission"
+                                ) +
+                                  " " +
+                                  _vm._s(_vm.__("property_submission"))
                               ),
                             ]),
                             _vm._v(" "),
@@ -43233,9 +43288,11 @@ var render = function () {
                               _vm._v(
                                 _vm._s(
                                   item.number_of_aminities == -1
-                                    ? "Unlimited"
+                                    ? _vm.__("unlimited")
                                     : item.number_of_aminities
-                                ) + " Aminity"
+                                ) +
+                                  " " +
+                                  _vm._s(_vm.__("aminity"))
                               ),
                             ]),
                             _vm._v(" "),
@@ -43243,9 +43300,11 @@ var render = function () {
                               _vm._v(
                                 _vm._s(
                                   item.number_of_nearestplace == -1
-                                    ? "Unlimited"
+                                    ? _vm.__("unlimited")
                                     : item.number_of_nearestplace
-                                ) + " Nearest Place"
+                                ) +
+                                  " " +
+                                  _vm._s(_vm.__("nearest_place"))
                               ),
                             ]),
                             _vm._v(" "),
@@ -43253,9 +43312,11 @@ var render = function () {
                               _vm._v(
                                 _vm._s(
                                   item.number_of_photo == -1
-                                    ? "Unlimited"
+                                    ? _vm.__("unlimited")
                                     : item.number_of_photo
-                                ) + " Photo"
+                                ) +
+                                  " " +
+                                  _vm._s(_vm.__("photo"))
                               ),
                             ]),
                             _vm._v(" "),
@@ -43264,7 +43325,7 @@ var render = function () {
                               {
                                 class: { add_before: !item.is_allow_featured },
                               },
-                              [_vm._v("Featured Property")]
+                              [_vm._v(_vm._s(_vm.__("featured_property")))]
                             ),
                             _vm._v(" "),
                             _c(
@@ -43279,9 +43340,11 @@ var render = function () {
                                       ? 0
                                       : item.is_allow_featured &&
                                         item.number_of_featured == -1
-                                      ? "Unlimited"
+                                      ? _vm.__("unlimited")
                                       : item.number_of_featured
-                                  ) + " Featured Property"
+                                  ) +
+                                    " " +
+                                    _vm._s(_vm.__("featured_property"))
                                 ),
                               ]
                             ),
@@ -43289,7 +43352,7 @@ var render = function () {
                             _c(
                               "li",
                               { class: { add_before: !item.is_allow_top } },
-                              [_vm._v("Top Property")]
+                              [_vm._v(_vm._s(_vm.__("top_property")))]
                             ),
                             _vm._v(" "),
                             _c(
@@ -43302,9 +43365,11 @@ var render = function () {
                                       ? 0
                                       : item.is_allow_top &&
                                         item.number_of_top == -1
-                                      ? "Unlimited"
+                                      ? _vm.__("unlimited")
                                       : item.number_of_top
-                                  ) + " Top Property"
+                                  ) +
+                                    " " +
+                                    _vm._s(_vm.__("top_property"))
                                 ),
                               ]
                             ),
@@ -43312,7 +43377,7 @@ var render = function () {
                             _c(
                               "li",
                               { class: { add_before: !item.is_allow_urgent } },
-                              [_vm._v("Urgent Property")]
+                              [_vm._v(_vm._s(_vm.__("urgent_property")))]
                             ),
                             _vm._v(" "),
                             _c(
@@ -43325,9 +43390,11 @@ var render = function () {
                                       ? 0
                                       : item.is_allow_urgent &&
                                         item.number_of_urgent == -1
-                                      ? "Unlimited"
+                                      ? _vm.__("unlimited")
                                       : item.number_of_urgent
-                                  ) + " Urgent Property"
+                                  ) +
+                                    " " +
+                                    _vm._s(_vm.__("urgent_property"))
                                 ),
                               ]
                             ),
@@ -43335,13 +43402,13 @@ var render = function () {
                             _c(
                               "li",
                               { class: { add_before: !item.is_auto_renew } },
-                              [_vm._v("Auto Renew")]
+                              [_vm._v(_vm._s(_vm.__("auto_renew")))]
                             ),
                             _vm._v(" "),
                             _c(
                               "li",
                               { class: { add_before: !item.is_agent } },
-                              [_vm._v("Agent")]
+                              [_vm._v(_vm._s(_vm.__("agent")))]
                             ),
                             _vm._v(" "),
                             _vm._l(
@@ -43373,7 +43440,7 @@ var render = function () {
                               },
                             },
                           },
-                          [_vm._v("Activate")]
+                          [_vm._v(_vm._s(_vm.__("activate")))]
                         ),
                       ],
                       1

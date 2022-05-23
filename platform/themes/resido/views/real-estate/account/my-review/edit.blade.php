@@ -18,13 +18,6 @@
 
     $getReviewMeta = \Botble\RealEstate\Models\ReviewMeta::where('review_id', $getMyReview->id)->get();
 
-    $slug = \Botble\Slug\Models\Slug::where('reference_id', $getMyReview->reviewable_id)->where('prefix', 'properties')->first();
-
-    $property = app(\Botble\RealEstate\Repositories\Interfaces\PropertyInterface::class)->advancedGet([
-        'condition' => [
-            're_properties.id' => $getMyReview->reviewable_id,
-        ],
-    ]);
 @endphp
 
 @section('content')
@@ -44,12 +37,17 @@
 
                                 <div id="clTen" class="panel-collapse collapse show">
                                     <div class="block-body">
+                                        @if ($getMyReview->reviewable_type == 'Botble\RealEstate\Models\Property')
                                         {!! Form::open(['route' => 'public.reviews.create', 'method' => 'post', 'class' => 'form--review-product']) !!}
-                                        <input type="hidden" name="reviewable_id" value="{{ $property[0]->id }}">
-                                        <input type="hidden" name="reviewable_type" value="{{ get_class($property[0]) }}">
+                                        @else 
+                                        {!! Form::open(['route' => 'public.post-reviews.create', 'method' => 'post', 'class' => 'form--review-product']) !!}
+                                        @endif                    
+                                        <input type="hidden" name="reviewable_id" value="{{ $getMyReview->reviewable_id }}">
+                                        <input type="hidden" name="reviewable_type" value="{{ $getMyReview->reviewable_type }}">
                                         <input type="hidden" name="review_id" value="{{ $getMyReview->id }}">
                                         <input type="hidden" name="review_comment" value="{{ $getMyReview->comment }}">
                                         <input type="hidden" name="edit" value="yes">
+                                        @if ($getMyReview->reviewable_type == 'Botble\RealEstate\Models\Property')
                                         @foreach($getReviewMeta as $key => $value)
                                         <input type="hidden" class="jkRate select-star-{{ $value->key }}" value="{{ $value->value }}" data-rating="{{ $value->value }}" review-id="select-star-{{ $value->key }}">
                                         <script>
@@ -108,6 +106,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group">

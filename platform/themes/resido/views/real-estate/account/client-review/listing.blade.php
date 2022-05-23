@@ -1,6 +1,7 @@
 @extends(Theme::getThemeNamespace() . '::views.real-estate.account.master')
 @php
 $user = auth('account')->user();
+
 $getClientReview = \Botble\RealEstate\Models\Review::join('re_properties', 're_properties.id', '=', 're_reviews.reviewable_id')->where('author_id', $user->id)->where('expire_date', '>', now()->toDateTimeString())->where('never_expired', false)->paginate();
 
 @endphp

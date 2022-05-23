@@ -21,6 +21,7 @@ use Botble\RealEstate\Http\Resources\ActivityLogResource;
 use Botble\RealEstate\Http\Resources\PackageResource;
 use Botble\RealEstate\Http\Resources\TransactionResource;
 use Botble\RealEstate\Models\Package;
+use Botble\RealEstate\Repositories\Interfaces\ReviewInterface;
 use Botble\RealEstate\Repositories\Interfaces\AccountActivityLogInterface;
 use Botble\RealEstate\Repositories\Interfaces\AccountInterface;
 use Botble\RealEstate\Repositories\Interfaces\AccountPackageInterface;
@@ -70,25 +71,33 @@ class PublicAccountController extends Controller
     protected $accountPackageRepository;
 
     /**
+     * @var ReviewInterface
+     */
+    protected $reviewRepository;
+
+    /**
      * PublicController constructor.
      * @param Repository $config
      * @param AccountInterface $accountRepository
      * @param AccountActivityLogInterface $accountActivityLogRepository
      * @param MediaFileInterface $fileRepository
      * @param AccountPackageInterface $accountPackageRepository
+     * @param ReviewInterface $reviewRepository
      */
     public function __construct(
         Repository $config,
         AccountInterface $accountRepository,
         AccountActivityLogInterface $accountActivityLogRepository,
         MediaFileInterface $fileRepository,
-        AccountPackageInterface $accountPackageRepository
+        AccountPackageInterface $accountPackageRepository,
+        ReviewInterface $reviewRepository
     )
     {
         $this->accountRepository = $accountRepository;
         $this->activityLogRepository = $accountActivityLogRepository;
         $this->fileRepository = $fileRepository;
         $this->accountPackageRepository = $accountPackageRepository;
+        $this->reviewRepository = $reviewRepository;
 
         Assets::setConfig($config->get('plugins.real-estate.assets'));
     }
@@ -562,7 +571,7 @@ class PublicAccountController extends Controller
     public function getClientReviewActivityLogs(BaseHttpResponse $response)
     {
         $activities = $this->activityLogRepository->getClientReviewAllLogs(auth('account')->id());
-        
+
         Assets::addScriptsDirectly('vendor/core/plugins/real-estate/js/components.js');
 
         return $response->setData(ActivityLogResource::collection($activities))->toApiResponse();
@@ -679,7 +688,22 @@ class PublicAccountController extends Controller
 
     public function deleteMyReview($id)
     {
-        Review::find($id)->delete();
+        $review = $this->reviewRepository->findOrFail($id);
+
+        if (auth()->check() || (auth('account')->check() && auth('account')->id() == $review->account_id)) {
+            $review->meta()->delete();
+            $this->reviewRepository->delete($review);
+
+            $this->activityLogRepository->deleteBy(
+                [
+                    'account_id' => auth('account')->id(), 
+                    'reference_type' => $review['reviewable_type'], 
+                    'reference_id' => $review['reviewable_id']
+                ]
+            );
+
+        }
+
         return redirect()->back();
     }
 

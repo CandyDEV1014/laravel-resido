@@ -14025,6 +14025,68 @@ footer .choose-currency {
   display: none;
 }
 
+.footer-widget.newsletter .large_subscribe {
+  margin: 45px 0px 0px 0px;
+  border: 0.5px solid #4b5d7c;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #4b5d7c;
+  border-right: 0;
+}
+
+.footer-widget.newsletter .large_subscribe .large_subscribe_text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-widget.newsletter .large_subscribe .large_subscribe_text h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.footer-widget.newsletter .large_subscribe form {
+  position: relative;
+  background: #354765;
+}
+
+.footer-widget.newsletter .large_subscribe form input {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+}
+
+.footer-widget.newsletter .large_subscribe form button {
+  background: #f02c2d;
+  width: 100px;
+  height: 51px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 33px;
+  border: none;
+  transition: all linear 0.3s;
+  -webkit-transition: all linear 0.3s ease;
+  -moz-transition: all linear 0.3s ease;
+  -ms-transition: all linear 0.3s ease;
+  -o-transition: all linear 0.3s ease;
+  text-align: center;
+}
+
+.footer-widget.newsletter .large_subscribe form button:hover {
+  background: #24324a;
+}
+
 /*===============================================
 	All Colors Option
 ================================================ */
@@ -15774,6 +15836,7 @@ a.text-danger:hover {
 }
 .language-wrapper .dropdown-menu li img {
   margin: 0 10px 0 0;
+  max-width: none;
 }
 .language-wrapper.choose-currency .dropdown-menu {
   width: 50px;

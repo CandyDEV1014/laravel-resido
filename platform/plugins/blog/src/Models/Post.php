@@ -4,6 +4,7 @@ namespace Botble\Blog\Models;
 
 use Botble\ACL\Models\User;
 use Botble\RealEstate\Models\Review;
+use Botble\RealEstate\Models\AccountActivityLog;
 use Botble\Base\Traits\EnumCastable;
 use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Revision\RevisionableTrait;
@@ -127,6 +128,11 @@ class Post extends BaseModel
         return $this->morphMany(Review::class, 'reviewable');
     }
     
+    public function activityLogs()
+    {
+        return $this->morphMany(AccountActivityLog::class, 'reference');
+    }
+
     protected static function boot()
     {
         parent::boot();

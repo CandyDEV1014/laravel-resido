@@ -22,6 +22,8 @@ class AccountActivityLog extends BaseModel
         'action',
         'user_agent',
         'reference_url',
+        'reference_id',
+        'reference_type',
         'reference_name',
         'ip_address',
         'account_id',
@@ -53,5 +55,13 @@ class AccountActivityLog extends BaseModel
         $time = Html::tag('span', $this->created_at->diffForHumans(), ['class' => 'small italic']);
 
         return trans('plugins/real-estate::dashboard.actions.' . $this->action, ['name' => $name, 'account_name' => $account->name]) . ' , ' . $time;
+    }
+
+    /**
+     * Get the parent reference model (property, blog).
+     */
+    public function reference()
+    {
+        return $this->morphTo();
     }
 }

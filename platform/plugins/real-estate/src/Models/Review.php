@@ -43,7 +43,7 @@ class Review extends BaseModel
     {
         return $this->morphTo();
     }
-
+    
     /**
      * @return BelongsTo
      */

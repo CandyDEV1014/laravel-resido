@@ -35,6 +35,11 @@
                     {!! dynamic_sidebar('footer_sidebar_3') !!}
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {!! dynamic_sidebar('footer_sidebar_4') !!}
+                </div>
+            </div>
         </div>
     </div>
 

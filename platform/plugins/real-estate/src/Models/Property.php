@@ -350,4 +350,9 @@ class Property extends BaseModel
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
+
+    public function activityLogs()
+    {
+        return $this->morphMany(AccountActivityLog::class, 'reference');
+    }
 }

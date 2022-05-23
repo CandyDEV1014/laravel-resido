@@ -79,38 +79,53 @@ class PublicReviewController
             
             $this->activityLogRepository->createOrUpdate([
                 'action'         => 'update_my_review',
+                'reference_id'   => $request->input('reviewable_id'),
+                'reference_type' => $request->input('reviewable_type'),
                 'reference_name' => $property->name,
                 'reference_url'  => $property->url,
             ]);
 
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'update_client_review',
-                'reference_name' => $property->name,
-                'reference_url'  => $property->url,
-            ]);
+            if (auth('account')->id() != $property->author_id) {
+                $this->activityLogRepository->createOrUpdate([
+                    'action'         => 'update_client_review',
+                    'reference_id'   => $request->input('reviewable_id'),
+                    'reference_type' => $request->input('reviewable_type'),
+                    'reference_name' => $property->name,
+                    'reference_url'  => $property->url,
+                ]);
+            }
             
         }else{
-            $request->merge(['account_id' => auth('account')->id()]);
+            if (!$exists) {
+                $request->merge(['account_id' => auth('account')->id()]);
 
-            $review = $this->reviewRepository->createOrUpdate($request->input());
-            
-            foreach ($request->input('meta') as $key => $value) {
-                ReviewMeta::setMeta($key, $value, $review->id);
+                $review = $this->reviewRepository->createOrUpdate($request->input());
+                
+                foreach ($request->input('meta') as $key => $value) {
+                    ReviewMeta::setMeta($key, $value, $review->id);
+                }
+
+                $property = app(PropertyInterface::class)->findOrFail($request->input('reviewable_id'));
+                
+                $this->activityLogRepository->createOrUpdate([
+                    'action'         => 'add_my_review',
+                    'reference_id'   => $request->input('reviewable_id'),
+                    'reference_type' => $request->input('reviewable_type'),
+                    'reference_name' => $property->name,
+                    'reference_url'  => $property->url,
+                ]);
+
+                if (auth('account')->id() != $property->author_id) {
+                    $this->activityLogRepository->createOrUpdate([
+                        'action'         => 'add_client_review',
+                        'reference_id'   => $request->input('reviewable_id'),
+                        'reference_type' => $request->input('reviewable_type'),
+                        'reference_name' => $property->name,
+                        'reference_url'  => $property->url,
+                    ]);
+                }
             }
-
-            $property = app(PropertyInterface::class)->findOrFail($request->input('reviewable_id'));
             
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'add_my_review',
-                'reference_name' => $property->name,
-                'reference_url'  => $property->url,
-            ]);
-
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'add_client_review',
-                'reference_name' => $property->name,
-                'reference_url'  => $property->url,
-            ]);
             
             // $this->activityLogRepository->createOrUpdate(['action' => 'add_review']);
         }
@@ -134,9 +149,16 @@ class PublicReviewController
         $review = $this->reviewRepository->findOrFail($id);
 
         if (auth()->check() || (auth('account')->check() && auth('account')->id() == $review->account_id)) {
-
             $review->meta()->delete();
             $this->reviewRepository->delete($review);
+
+            $this->activityLogRepository->deleteBy(
+                [
+                    'account_id' => auth('account')->id(), 
+                    'reference_type' => $review['reviewable_type'], 
+                    'reference_id' => $review['reviewable_id']
+                ]
+            );
 
             return $response->setMessage(__('Deleted review successfully!'));
         }
@@ -156,7 +178,6 @@ class PublicReviewController
             'reviewable_id'  => $request->input('reviewable_id'),
             'reviewable_type'  => $request->input('reviewable_type'),
         ]);
-
         $setting = \Botble\Setting\Models\Setting::where('key', 'real_estate_review_fields')->first();
         $settingReviewFields = json_decode($setting->value);
 
@@ -183,37 +204,31 @@ class PublicReviewController
             
             $this->activityLogRepository->createOrUpdate([
                 'action'         => 'update_my_review',
-                'reference_name' => $post->name,
-                'reference_url'  => $post->url,
-            ]);
-
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'update_client_review',
+                'reference_id'   => $request->input('reviewable_id'),
+                'reference_type' => $request->input('reviewable_type'),
                 'reference_name' => $post->name,
                 'reference_url'  => $post->url,
             ]);
             
         }else{
-            $request->merge(['account_id' => auth('account')->id()]);
+            if (!$exists) {
+                $request->merge(['account_id' => auth('account')->id()]);
 
-            $review = $this->reviewRepository->createOrUpdate($request->input());
-            
-            // foreach ($request->input('meta') as $key => $value) {
-            //     ReviewMeta::setMeta($key, $value, $review->id);
-            // }
-            
-            $post = app(PostInterface::class)->findOrFail($request->input('reviewable_id'));
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'add_my_review',
-                'reference_name' => $post->name,
-                'reference_url'  => $post->url,
-            ]);
-
-            $this->activityLogRepository->createOrUpdate([
-                'action'         => 'add_client_review',
-                'reference_name' => $post->name,
-                'reference_url'  => $post->url,
-            ]);
+                $review = $this->reviewRepository->createOrUpdate($request->input());
+                
+                // foreach ($request->input('meta') as $key => $value) {
+                //     ReviewMeta::setMeta($key, $value, $review->id);
+                // }
+                
+                $post = app(PostInterface::class)->findOrFail($request->input('reviewable_id'));
+                $this->activityLogRepository->createOrUpdate([
+                    'action'         => 'add_my_review',
+                    'reference_id'   => $request->input('reviewable_id'),
+                    'reference_type' => $request->input('reviewable_type'),
+                    'reference_name' => $post->name,
+                    'reference_url'  => $post->url,
+                ]);
+            }
         }
 
         if ($request->input('edit') == 'yes') {
@@ -238,6 +253,14 @@ class PublicReviewController
 
             $review->meta()->delete();
             $this->reviewRepository->delete($review);
+
+            $this->activityLogRepository->deleteBy(
+                [
+                    'account_id' => auth('account')->id(), 
+                    'reference_type' => $review['reviewable_type'], 
+                    'reference_id' => $review['reviewable_id']
+                ]
+            );
 
             return $response->setMessage(__('Deleted review successfully!'));
         }

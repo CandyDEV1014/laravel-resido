@@ -46,6 +46,12 @@ register_sidebar([
 ]);
 
 register_sidebar([
+    'id'          => 'footer_sidebar_4',
+    'name'        => __('Footer sidebar 4'),
+    'description' => __('Footer sidebar 4 for Resido theme'),
+]);
+
+register_sidebar([
     'id'          => 'property_sidebar',
     'name'        => __('Property sidebar'),
     'description' => __('Property sidebar for Resido theme'),

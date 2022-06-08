@@ -39,11 +39,7 @@ class Country extends BaseModel
     {
         parent::boot();
         static::deleting(function (Country $country) {
-            $states = State::get();
-            foreach ($states as $state) {
-                State::where('id', $state->id)->delete();
-            }
-
+            State::where('country_id', $country->id)->delete();
             City::where('country_id', $country->id)->delete();
         });
     }

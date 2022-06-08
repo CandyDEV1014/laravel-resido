@@ -1,8 +1,13 @@
 @php
+$defaultLanguage = app(Botble\Language\Repositories\Interfaces\LanguageInterface::class)->getDefaultLanguage();
+$default_locale = $defaultLanguage->lang_locale;
+$current_locale = App::getLocale();
+
 $details = $property->details()
     ->where('status', Botble\Base\Enums\BaseStatusEnum::PUBLISHED)
     ->orderBy('order', 'DESC')
     ->get();
+
 @endphp
 <div class="property_block_wrap style-2">
 
@@ -15,11 +20,20 @@ $details = $property->details()
         <div class="block-body">
             <ul class="detail_features">
                 @foreach($details as $detail)
-                <li>
-                    <strong>{{ $detail->title }}: </strong>
-                    {!! clean($detail->pivot->value) !!} 
-                    {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
-                </li>
+                    @if ($detail->type == 'selectbox')
+                    <li>
+                        <strong>{{ $detail->title }}: </strong>
+                        <span>{!! clean($current_locale == $default_locale ? $detail->pivot->value : $detail->pivot->value2) !!} </span>
+                        {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
+                    </li>
+                    @else
+                    <li>
+                        <strong>{{ $detail->title }}: </strong>
+                        <span>{!! clean($detail->pivot->value) !!} </span>
+                        {{ $detail->type == Botble\RealEstate\Enums\DetailTypeEnum::SQUARE ? setting('real_estate_square_unit', 'm²') : $detail->alt }}
+                    </li>
+                    @endif
+                
                 @endforeach
                 
                 @if ($property->category)

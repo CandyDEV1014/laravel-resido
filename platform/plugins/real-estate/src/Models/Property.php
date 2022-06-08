@@ -89,7 +89,7 @@ class Property extends BaseModel
      */
     public function details(): BelongsToMany
     {
-        return $this->belongsToMany(Detail::class, 're_property_details', 'property_id', 'detail_id')->withPivot('value');
+        return $this->belongsToMany(Detail::class, 're_property_details', 'property_id', 'detail_id')->withPivot('value', 'value2');
     }
 
     /**

@@ -129,6 +129,7 @@ class CountryController extends BaseController
             event(new DeletedContentEvent(COUNTRY_MODULE_SCREEN_NAME, $request, $country));
 
             return $response->setMessage(trans('core/base::notices.delete_success_message'));
+
         } catch (Exception $exception) {
             return $response
                 ->setError()

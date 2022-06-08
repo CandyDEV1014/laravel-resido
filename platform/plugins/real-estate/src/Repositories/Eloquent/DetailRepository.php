@@ -15,7 +15,8 @@ class DetailRepository extends RepositoriesAbstract implements DetailInterface
         $data = $this->model->categories()->get();
 
         $data = $this->model
-            ->select('re_details.*')
+            ->select(['re_details.*', 're_details_translations.features as features2'])
+            ->leftJoin('re_details_translations', 're_details.id', '=', 're_details_translations.re_details_id')
             ->Join('re_detail_categories', function ($join) use ($category_id) {
                 $join->on('re_details.id', '=', 're_detail_categories.detail_id')
                     ->where('re_detail_categories.category_id', '=', $category_id);

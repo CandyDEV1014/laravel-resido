@@ -621,7 +621,7 @@ function get_image_loading()
 if (!function_exists('get_countries')) {
     function get_countries()
     {
-        return app(CountryInterface::class)->all();
+        return app(CountryInterface::class)->allBy(['status' => BaseStatusEnum::PUBLISHED]);
     }
 }
 
@@ -629,7 +629,8 @@ if (!function_exists('get_states_by_country')) {
     function get_states_by_country($countryId)
     {
         return app(StateInterface::class)->allBy([
-            'country_id' => $countryId
+            'country_id' => $countryId,
+            'status' => BaseStatusEnum::PUBLISHED
         ]);
     }
 }
@@ -638,7 +639,8 @@ if (!function_exists('get_cities_by_state')) {
     function get_cities_by_state($stateId)
     {
         return app(CityInterface::class)->allBy([
-            'state_id' => $stateId
+            'state_id' => $stateId,
+            'status' => BaseStatusEnum::PUBLISHED
         ]);
     }
 }
@@ -648,7 +650,8 @@ if (!function_exists('get_re_categories')) {
     {
         return app(Botble\RealEstate\Repositories\Interfaces\CategoryInterface::class)
             ->allBy([
-                'parent_id' => $parentId
+                'parent_id' => $parentId,
+                'status' => BaseStatusEnum::PUBLISHED
             ]);
     }
 }

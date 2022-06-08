@@ -156,7 +156,7 @@ class AccountPropertyForm extends FormAbstract
         $currencies = $this->currencyRepository->pluck('re_currencies.title', 're_currencies.id');
 
         // get all countries
-        $countries = $this->countryRepository->all();
+        $countries = $this->countryRepository->allBy(['status' => BaseStatusEnum::PUBLISHED]);
 
         $countryChoices = [];
         foreach ($countries as $country) {
@@ -165,25 +165,35 @@ class AccountPropertyForm extends FormAbstract
 
         // get states by country
         $stateChoices = [];
-        if ($this->getModel()) {
+        if ($this->getModel() && isset($this->getModel()->country_id)) {
             $states = $this->stateRepository->getStatesByCountry($this->getModel()->country_id ? $this->getModel()->country_id : 0);
             foreach ($states as $state) {
                 $stateChoices[$state->id] = $state->name ? $state->name : '';
             }
-        } 
+        } else {
+            $states = $this->stateRepository->getStatesByCountry(array_key_first($countryChoices) ? array_key_first($countryChoices) : 0);
+            foreach ($states as $state) {
+                $stateChoices[$state->id] = $state->name ? $state->name : '';
+            }
+        }
 
         // get cities by state
         
         $cityChoices = [];
-        if ($this->getModel()) {
+        if ($this->getModel() && isset($this->getModel()->state_id)) {
             $cities = $this->cityRepository->getCitiesByState($this->getModel()->state_id ? $this->getModel()->state_id : 0);
+            foreach ($cities as $city) {
+                $cityChoices[$city->id] = $city->name ? $city->name : '';
+            }
+        } else {
+            $cities = $this->cityRepository->getCitiesByState(array_key_first($stateChoices) ? array_key_first($stateChoices) : 0);
             foreach ($cities as $city) {
                 $cityChoices[$city->id] = $city->name ? $city->name : '';
             }
         }
         
         // get all categories
-        $categories = $this->categoryRepository->allBy(['parent_id' => 0]);
+        $categories = $this->categoryRepository->allBy(['parent_id' => 0, 'status' => BaseStatusEnum::PUBLISHED]);
         $categoryChoices = [];
         foreach ($categories as $category) {
             $categoryChoices[$category->id] = $category->name ? $category->name : '';
@@ -192,13 +202,13 @@ class AccountPropertyForm extends FormAbstract
         // get subcategories by category
         $subcategoryChoices = [];
 
-        if ($this->getModel()) {
+        if ($this->getModel() && isset($this->getModel()->category_id)) {
             $subcategories = $this->categoryRepository->getSubcategories($this->getModel()->category_id ? $this->getModel()->category_id : 0);
             foreach ($subcategories as $subcategory) {
                 $subcategoryChoices[$subcategory->id] = $subcategory->name ? $subcategory->name : '';
             }
         } else {
-            $subcategories = $this->categoryRepository->getSubcategories(array_key_first($categoryChoices));
+            $subcategories = $this->categoryRepository->getSubcategories(array_key_first($categoryChoices) ? array_key_first($categoryChoices) : 0);
             foreach ($subcategories as $subcategory) {
                 $subcategoryChoices[$subcategory->id] = $subcategory->name ? $subcategory->name : '';
             }
@@ -212,7 +222,16 @@ class AccountPropertyForm extends FormAbstract
 
         $selectedDetails = [];
         if ($this->getModel()) {
-            $selectedDetails = $this->getModel()->details()->pluck('re_property_details.value', 're_details.id')->all();
+            // $selectedDetails = $this->getModel()->details()->pluck('re_property_details.value', 're_details.id')->all();
+            $selectedAllDetails = $this->getModel()->details()->get();
+            foreach ($selectedAllDetails as $detail) {
+                $id = $detail->id;
+                $value = [
+                    'value' => $detail->pivot->value,
+                    'value2' => $detail->pivot->value2
+                ];
+                $selectedDetails[$id] = $value;
+            }
         }
 
         // $details = $this->detailRepository->allBy([], [], ['re_details.id', 're_details.name', 're_details.type', 're_details.order', 're_details.features']);

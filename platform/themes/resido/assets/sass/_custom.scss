@@ -83,6 +83,9 @@ $primaryColor: #2b4db9;
 .blog-details {
     img {
         max-width: 100%;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
     }
 }
 

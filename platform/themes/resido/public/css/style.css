@@ -15036,6 +15036,10 @@ footer .choose-currency {
 .property-detail img,
 .blog-details img {
   max-width: 100%;
+  width: 100%;
+  height: 230px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .property-detail .list-gallery-inline img {
